@@ -1,6 +1,6 @@
 # AIIFY
 
-AIIFY is a C++ project that processes files in a directory, respecting `.gitignore` rules, and outputs the contents of non-ignored files.
+AIIFY is a C++ project that processes files in a directory, respecting `.gitignore` rules, and outputs the contents of non-ignored files. This combined file may then be copied into an AI prompt to give it full context on your application.
 
 ## Features
 
