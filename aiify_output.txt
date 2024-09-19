@@ -1,0 +1,3427 @@
+File: .gitignore
+Contents:
+.DS_Store
+node_modules
+/build
+/.svelte-kit
+/package
+.env
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+
+--------------------------------
+File: package.json
+Contents:
+{
+	"name": "kgromero",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^3.0.0",
+		"@sveltejs/kit": "^2.0.0",
+		"@sveltejs/vite-plugin-svelte": "^3.0.0",
+		"autoprefixer": "^10.4.16",
+		"postcss": "^8.4.33",
+		"svelte": "^4.2.7",
+		"vite": "^5.0.3"
+	},
+	"type": "module",
+	"dependencies": {
+		"@fortawesome/free-brands-svg-icons": "^6.5.2",
+		"@fortawesome/free-solid-svg-icons": "^6.5.2",
+		"@fortawesome/svelte-fontawesome": "^0.2.2",
+		"flowbite": "^2.3.0",
+		"flowbite-svelte": "^0.46.1",
+		"flowbite-svelte-icons": "^1.6.1",
+		"kgromero": "file:",
+		"lucide-svelte": "^0.436.0",
+		"svelte-fa": "^4.0.2",
+		"tailwindcss": "^3.4.1",
+		"three": "^0.168.0"
+	}
+}
+
+--------------------------------
+File: postcss.config.js
+Contents:
+export default {
+  plugins: {
+    tailwindcss: {},
+    autoprefixer: {}
+  }
+};
+--------------------------------
+File: README.md
+Contents:
+# Source Code for https://kgromero.com
+
+- Hosted in GitHub at: https://github.com/romero927/kgromero
+
+- Developed using [SvelteKit](https://kit.svelte.dev/), utilizing [TailwindCSS](https://tailwindcss.com/), [FontAwesome](https://fontawesome.com/), and [Flowbite](https://flowbite.com/).
+
+- Deployed and hosted via [Netlify](https://www.netlify.com/)
+
+- NPM commands:
+  -  "dev": "vite dev",
+  -  "build": "vite build",
+  -  "preview": "vite preview"
+
+- Main Page Code at: src\routes\\+page.svelte
+
+- Analytics captured by [Google Analytics](https://marketingplatform.google.com/about/analytics/)
+
+## Built by:
+- Kyle Romero
+- Jersey City, NJ 07311
+- 281-857-9006
+- kgromero@gmail.com
+
+
+--------------------------------
+File: svelte.config.js
+Contents:
+import adapter from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+  preprocess: vitePreprocess(),
+  kit: {
+    adapter: adapter(),
+    files: {
+      assets: 'static'
+    }
+  }
+  
+};
+
+export default config;
+--------------------------------
+File: tailwind.config.js
+Contents:
+/** @type {import('tailwindcss').Config} */
+const config = {
+  content: [
+    './src/**/*.{html,js,svelte,ts}',
+    './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+  ],
+  theme: {
+    extend: {
+      colors: {
+        // flowbite-svelte
+        primary: {
+          50: '#FFF5F2',
+          100: '#FFF1EE',
+          200: '#FFE4DE',
+          300: '#FFD5CC',
+          400: '#FFBCAD',
+          500: '#FE795D',
+          600: '#EF562F',
+          700: '#EB4F27',
+          800: '#CC4522',
+          900: '#A5371B'
+        }
+      }
+    }
+  },
+  plugins: [require('flowbite/plugin')],
+  darkMode: 'class',
+};
+
+module.exports = config;
+--------------------------------
+File: vite.config.js
+Contents:
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vite';
+
+export default defineConfig({
+	plugins: [sveltekit()],
+	assetsInclude: ['**/*.docx','**/*.txt','**/*.png','**/*.webm','**/*.md','**/*.jpeg', '**/*.pdf']
+});
+
+--------------------------------
+File: static\keybase.txt
+Contents:
+==================================================================
+https://keybase.io/kgromero
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://kgromero.com
+  * I am kgromero (https://keybase.io/kgromero) on keybase.
+  * I have a public key ASCqVUOYOTtdqSakRVUXjOtsp1s1gbbSyeRIJ4Q6be5qJQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120409fa5400e4c80fbc2ce536dd2c521eeadd0c8cca11a309c5b8a9379110a05b60a",
+      "host": "keybase.io",
+      "kid": "0120aa554398393b5da926a44555178ceb6ca75b3581b6d2c9e44827843a6dee6a250a",
+      "uid": "e287304c6e46301db1e7ae1394fcfc19",
+      "username": "kgromero"
+    },
+    "merkle_root": {
+      "ctime": 1593898405,
+      "hash": "8fc2049e0321dc465628bbae393bba33193effff7966f54549ac34415477ec8c2e513d9354c3024981e1277b3c430f4731fbe03041b326908c0c9e5c42ed6502",
+      "hash_meta": "3d4dfba6cec3f927b484653fb96ef47887952c50e6046afbb0094b812252706d",
+      "seqno": 16869099
+    },
+    "service": {
+      "entropy": "GTJ68SOHJwwixEqnxIqGRmz6",
+      "hostname": "kgromero.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "5.5.0"
+  },
+  "ctime": 1593898440,
+  "expire_in": 504576000,
+  "prev": "09c0c30eeab7a9d65936565620c3f989c98b3c66a80861ee9cb86f84c3706b60",
+  "seqno": 26,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEgqlVDmDk7XakmpEVVF4zrbKdbNYG20snkSCeEOm3uaiUKp3BheWxvYWTESpcCGsQgCcDDDuq3qdZZNlZWIMP5icmLPGaoCGHunLhvhMNwa2DEILzUFWheMl/kgQV1R9KhEor5jI/9No4EfSUbx7Pd4RRCAgHCo3NpZ8RASyXxopDLVwMZAFtxEwD/DQDdmUkgpxPke8U1DvQFGFcpD7lbA8AQc+tDIdU+c8sByp+TBS9YfTXN6NBzN3NPD6hzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEINPARi5tpwOw8i2oTxghgUd8jmiZdpzowHyFv/9GjQqIo3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/kgromero
+
+==================================================================
+
+--------------------------------
+File: static\Kyle_Romero-Resume.md
+Contents:
+[Binary file, contents not shown]
+
+--------------------------------
+File: static\robots.txt
+Contents:
+# robots.txt for https://kgromero.com
+
+User-agent: *
+Allow: /
+
+# Disallow any potential admin or private areas
+Disallow: /admin/
+Disallow: /private/
+
+# Disallow any temporary or test pages
+Disallow: /temp/
+Disallow: /test/
+
+# Optional: Disallow specific file types
+Disallow: /*.pdf$
+Disallow: /*.doc$
+
+# Sitemap location
+Sitemap: https://kgromero.com/sitemap.xml
+
+# Crawl-delay directive (optional, use if you want to limit crawl rate)
+# Crawl-delay: 10
+--------------------------------
+File: static\sitemap.xml
+Contents:
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://kgromero.com/</loc>
+    <lastmod>2024-09-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
+--------------------------------
+File: src\app.css
+Contents:
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* You can add any global styles here */
+.lazy-image {
+    background-color: #f0f0f0; /* Light grey background */
+    transition: filter 0.3s ease-out;
+  }
+--------------------------------
+File: src\app.html
+Contents:
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Kyle Romero</title>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.ico" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		%sveltekit.head%
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
+--------------------------------
+File: src\routes\+layout.svelte
+Contents:
+<script>
+    import "../app.css";
+    import { page } from '$app/stores';
+    import { seoData } from '$lib/seoData';
+  
+    $: title = $page.data.title || seoData.defaultTitle;
+    $: description = $page.data.description || seoData.defaultDescription;
+    $: image = $page.data.image || seoData.defaultImage;
+    $: structuredData = $page.data.structuredData || seoData.defaultStructuredData;
+  </script>
+  
+  <svelte:head>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={$page.url.href} />
+    
+    <!-- Open Graph tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={$page.url.href} />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+    
+    <!-- Structured data -->
+    <script type="application/ld+json">
+      {JSON.stringify(structuredData)}
+    </script>
+  </svelte:head>
+  
+  <slot></slot>
+  
+  <style>
+    /* Your existing styles (if any) */
+  </style>
+--------------------------------
+File: src\routes\+page.svelte
+Contents:
+<script>
+  import { onMount } from 'svelte';
+  import { fade } from 'svelte/transition';
+  import { Footer, FooterCopyright } from 'flowbite-svelte';
+  import NavBar from '$lib/components/NavBar.svelte'; 
+  import AboutMe from '$lib/components/AboutMe.svelte';
+  import ContactInfo from '$lib/components/ContactInfo.svelte';
+  import Experience from '$lib/components/Experience.svelte';
+  import Skills from '$lib/components/Skills.svelte';
+  import Other from '$lib/components/Other.svelte';
+  import { locale, t } from '$lib/i18n';
+  import { Heading, P, A, Mark, Secondary, Hr } from "flowbite-svelte";
+
+  let yearsExperience;
+
+  onMount(() => {
+    const startDate = new Date("July 15, 2007");
+    const diff = Math.abs(new Date() - startDate);
+    yearsExperience = Math.floor(diff / 31536000000);
+  });
+
+</script>
+
+<div class="min-h-screen dark:bg-gray-900">
+  <NavBar />
+  
+  <div class="container mx-auto rounded-lg text-center border dark:border-white/10 py-2 bg-gray-50 dark:bg-gray-800">
+    <Heading class="text-black/60 mb-2 dark:text-gray-400">{$t.name}</Heading>
+    <P class="text-center text-black/60 dark:text-gray-400">
+      {$t.description(yearsExperience)}
+    </P>
+  </div>
+  
+  <div class="container mx-auto my-2 lg:grid grid-cols-5">
+    {#each ['AboutMe', 'ContactInfo', 'Experience', 'Skills', 'Other'] as component}
+      <div in:fade="{{ duration: 300, delay: 300 }}">
+        <svelte:component this={{
+          AboutMe,
+          ContactInfo,
+          Experience,
+          Skills,
+          Other
+        }[component]} />
+      </div>
+    {/each}
+  </div>
+
+  <Footer>
+    <FooterCopyright
+      href="/"
+      by="Kyle Romero"
+      year={2024}
+      copyrightMessage={$t.footerMessage}
+    />
+  </Footer>
+</div>
+--------------------------------
+File: src\lib\i18n.js
+Contents:
+[Binary file, contents not shown]
+
+--------------------------------
+File: src\lib\index.js
+Contents:
+// place files you want to import through the `$lib` alias in this folder.
+
+--------------------------------
+File: src\lib\seoData.js
+Contents:
+// src/lib/seoData.js
+export const seoData = {
+    defaultTitle: "Kyle Romero",
+    defaultDescription: "Kyle Romero is a Software Engineering Leader with extensive experience in IT, based in Jersey City, NJ. Specializing in full-stack development and team management.",
+    defaultImage: "https://kgromero.com/images/kgromero.png", // Replace with your actual image URL
+    siteUrl: "https://kgromero.com", // Replace with your actual site URL
+    defaultStructuredData: {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kyle Romero",
+      "jobTitle": "Software Engineering Leader",
+      "url": "https://kgromero.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/kyleromero/",
+        "https://github.com/romero927"
+      ]
+    }
+  };
+--------------------------------
+File: src\lib\store.js
+Contents:
+import { writable } from 'svelte/store';
+
+export const appState = writable({
+  // Add any global state here
+  // For example:
+  // darkMode: false,
+  // currentSection: 'about',
+});
+--------------------------------
+File: src\lib\utils.js
+Contents:
+export function lazyLoad(image) {
+  const loadImage = () => {
+    // Load low-res placeholder
+    const lowRes = image.dataset.placeholder;
+    if (lowRes) {
+      image.style.filter = 'blur(20px)';
+      image.src = lowRes;
+    }
+
+    // Create a new image element to load the full resolution image
+    const img = new Image();
+    img.src = image.dataset.src;
+    img.onload = () => {
+      // When the full image is loaded, apply it and remove the blur
+      image.src = img.src;
+      image.style.filter = 'none';
+      image.style.transition = 'filter 0.1s ease-out';
+    };
+
+    image.removeAttribute('data-src');
+    image.removeAttribute('data-placeholder');
+  };
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          loadImage();
+          observer.unobserve(image);
+        }
+      });
+    });
+
+    observer.observe(image);
+  } else {
+    loadImage();
+  }
+}
+--------------------------------
+File: src\lib\components\AboutMe.svelte
+Contents:
+<script>
+  import { Card, Hr } from 'flowbite-svelte';
+  import { t } from '$lib/i18n';
+  import { lazyLoad } from '$lib/utils';
+  import Fa from 'svelte-fa';
+  import { faChartLine } from '@fortawesome/free-solid-svg-icons';
+</script>
+
+<Card class="items-center max-w-full h-full bg-gray-50" padding="xs">
+  <b class="pt-1 pb-3">{$t.aboutMe.title}</b>
+  <Hr classHr="border w-full m-1" />
+  <br />
+  <img 
+    class="w-1/2 rounded-full m-1 lazy-image" 
+    alt="Kyle Romero" 
+    src="/images/kgromero.webp"
+  />
+  <br />
+  <Hr classHr="border w-full m-1" />
+  <br />
+  <div class="text-base">{$t.aboutMe.content}</div>
+  <br />
+  <Hr classHr="border w-full m-1" />
+  <br />
+  <div class="text-base ">{$t.aboutMe.openTo}</div>
+  <br />
+  <Hr classHr="border w-full m-1" />
+  <br />
+  <div class="text-base flex w-full">
+    <Fa icon={faChartLine} />
+    <span class="leading-tight ml-2 text-gray-500 dark:text-gray-400">
+      <a href="https://pagespeed.web.dev/analysis/https-kgromero-com/s8chbogul3?form_factor=desktop" target="_blank">Site PageSpeed</a>
+    </span>
+  </div>
+</Card>
+--------------------------------
+File: src\lib\components\ContactInfo.svelte
+Contents:
+<script>
+    import { Card, Hr } from 'flowbite-svelte';
+    import { t } from '$lib/i18n';
+    import { lazyLoad } from '$lib/utils';
+    import Fa from 'svelte-fa';
+    import { faPhone, faEnvelope, faLink, faChartLine, faTerminal, faWalkieTalkie, faComments } from '@fortawesome/free-solid-svg-icons';
+    import { faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
+  </script>
+  
+  <Card class="items-center text-center mx-auto max-w-full h-full bg-gray-50 " padding="xs">
+    <b class="pt-1 pb-3">{$t.contactInfo.title}</b>
+    <Hr classHr="border w-full m-1" />
+    <br />
+    <img
+      alt="vCard (Scan on Phone to add to Contacts)"
+      title="vCard (Scan on Phone to add to Contacts)"
+      src="/images/QR.webp"
+    />
+    <br />
+    <Hr classHr="border w-60 m-1" />
+    <ul class="my-4 space-y-4 text-base">
+      <li class="flex space-x-2">
+        <Fa icon={faPhone} />
+        <span class="font-normal leading-tight text-gray-500 dark:text-gray-400">
+          <a href="tel://+12818579006">{$t.contactInfo.phone}</a>
+        </span>
+      </li>
+      <li class="flex space-x-2">
+        <Fa icon={faEnvelope} />
+        <span class="font-normal leading-tight text-gray-500 dark:text-gray-400">
+          <a href="mailto:kgromero@gmail.com" target="_top">{$t.contactInfo.email}</a>
+        </span>
+      </li>
+      <Hr classHr="border w-60 border-gray-200 dark:border-gray-700" />
+      <li class="flex space-x-2">
+        <Fa icon={faLinkedin} />
+        <span class="font-normal leading-tight text-gray-500 dark:text-gray-400">
+          <a href="https://www.linkedin.com/in/kyleromero/" target="_blank">{$t.contactInfo.linkedin}</a>
+        </span>
+      </li>
+      <li class="flex space-x-2">
+        <Fa icon={faGithub} />
+        <a href="https://github.com/romero927" target="_blank">{$t.contactInfo.github}</a>
+      </li>
+      <Hr classHr="border w-60 border-gray-200 dark:border-gray-700" />
+      <li class="flex space-x-2">
+        <Fa icon={faLink} />
+        <span class="font-normal leading-tight text-gray-500 dark:text-gray-400">
+          <a href="https://linktr.ee/kgromero" target="_blank">{$t.contactInfo.linktree}</a>
+        </span>
+      </li>
+      <Hr classHr="border w-60 border-gray-200 dark:border-gray-700" />
+    </ul>
+  </Card>
+--------------------------------
+File: src\lib\components\Experience.svelte
+Contents:
+<script>
+    import { Card, Hr, Timeline, TimelineItem } from 'flowbite-svelte';
+    import { t } from '$lib/i18n';
+  </script>
+  
+  <Card class="items-center mx-auto max-w-full h-full bg-gray-50" padding="xs">
+    <b class="pt-1 pb-3">{$t.experience.title}</b>
+    <Hr classHr="border w-full m-1" />
+    <br />
+    <Timeline class="text-sm p-0 m-0 ml-3 mr-3">
+      {#each $t.experience.timeline as item}
+        <TimelineItem date={item.date} classLi="mb-5">
+          <br /><b>{item.title}</b>
+        </TimelineItem>
+      {/each}
+    </Timeline>
+  </Card>
+--------------------------------
+File: src\lib\components\NavBar.svelte
+Contents:
+<!-- src/lib/components/Navbar.svelte -->
+<script>
+  import {
+    Navbar,
+    NavBrand,
+    NavLi,
+    NavUl,
+    NavHamburger,
+    Dropdown,
+    DropdownItem,
+    DropdownDivider,
+    DarkMode
+  } from "flowbite-svelte";
+  import { ChevronDownOutline } from "flowbite-svelte-icons";
+  import Fa from "svelte-fa";
+  import { faCode } from "@fortawesome/free-solid-svg-icons";
+
+  import ResumeShellWrapper from './ResumeShellWrapper.svelte';
+
+  // Import your logo
+  import logo from "$lib/assets/logo.webp";
+
+  // Import your document assets
+  import BusinessCard from "$lib/assets/kgromero_businesscard.png";
+
+  // Import your other document assets
+  import OrgStructure from "$lib/assets/OrgStructure.png";
+  import SDLC from "$lib/assets/SDLC Items Flows.png";
+  import Release from "$lib/assets/Release Process.png";
+  import Path from "$lib/assets/Development Path.pdf";
+  import Landscape from "$lib/assets/IT Landscape.png";
+  import Process from "$lib/assets/Development Process.png";
+  import Electron from "$lib/assets/Electron Architecture.png";
+  import Workflow from "$lib/assets/Workflow.pdf";
+  import WWMMobile from "$lib/assets/WWMMobile.png";
+  import WWMLandscape from "$lib/assets/WWMLandscape.png";
+  import SIOverview from "$lib/assets/SIOverview.pdf";
+  import SIAL from "$lib/assets/SIAL.png";
+  import CSM from "$lib/assets/CSM.pdf";
+  import Internship from "$lib/assets/Internship.pdf";
+  import PlasmaTraceSystem from "$lib/assets/PlasmaTraceSystem.pdf";
+  import ChemicalTracking from "$lib/assets/ChemicalTracking.pdf";
+  import MaskToolingManual from "$lib/assets/MaskToolingManual.pdf";
+  import DeviceMTM from "$lib/assets/DeviceMTM.pdf";
+  import MiscProjects from "$lib/assets/MiscProjects.pdf";
+  import OtherInformationAboutMe from "$lib/assets/OtherInformationAboutMe.pdf";
+  import Lab1Project1 from "$lib/assets/Lab1Project1.pdf";
+  import Lab1Project2Presentation from "$lib/assets/Lab1Project2Presentation.pdf";
+  import Lab1Project2 from "$lib/assets/Lab1Project2.pdf";
+  import Lab2FinalPresentation from "$lib/assets/Lab2FinalPresentation.pdf";
+  import Lab2FinalReport from "$lib/assets/Lab2FinalReport.pdf";
+  import Lab2TrialVideo from "$lib/assets/Lab2TrialVideo.webm";
+  import Lab3FinalPresentation from "$lib/assets/Lab3FinalPresentation.pdf";
+  import Lab3FinalReport from "$lib/assets/Lab3FinalReport.pdf";
+  import ProjectLabVFinalReport from "$lib/assets/ProjectLabVFinalReport.pdf";
+  import MicroprocessorArchitectureFinalProjectR from "$lib/assets/MicroprocessorArchitectureFinalProject.pdf";
+  import TrellisDesignforLHUCA from "$lib/assets/TrellisDesignforLHUCA.pdf";
+  import Transcript_Kromero from "$lib/assets/Transcript_Kromero.pdf";
+  import Sentiment from "$lib/assets/Twitter Sentiment Analysis.png";
+  import RPi from "$lib/assets/RPi LED Display.webm";
+  import RTL from "$lib/assets/RTL-SDR.pdf";
+  import RedditListener from "$lib/assets/KyleRomero_RedditListener_Walkthrough.pdf";
+</script>
+
+<Navbar class="container mx-auto border rounded-lg border-gray/10 dark:border-white/10 py-0 mb-2 bg-gray-50 dark:bg-gray-800 text-black/60 dark:text-gray-400">
+  <NavBrand>
+    <img class="w-11 mr-2" alt="logo" src={logo} />
+  </NavBrand>
+  <NavHamburger />
+  <NavUl ulClass="border-none flex flex-col p-4 mt-4 bg-gray-50 dark:bg-gray-800 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:text-sm md:font-medium">
+    <DropdownDivider divClass="my-1 h-px bg-gray-100 dark:bg-gray-600 lg:display-none" />
+    <NavLi class="my-2 cursor-pointer text-black/60 dark:text-gray-400">
+      Resume<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+    </NavLi>
+    <Dropdown class="z-20 pl-5 pr-5 w-full">
+      <DropdownItem href="/Kyle_Romero-Resume.pdf" target="_blank">Resume - PDF</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem href="/Kyle_Romero-Resume.docx" target="_blank">Resume - DOCX</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem href="/Kyle_Romero-Resume.md" target="_blank">Resume - MD</DropdownItem>
+      <DropdownDivider />
+      <DropdownItem href=/Kyle_Romero-Coverletter.pdf target="_blank">Cover Letter</DropdownItem>
+    </Dropdown>
+    <NavLi class="my-2 cursor-pointer text-black/60 dark:text-gray-400">
+      Supporting Documents<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+    </NavLi>
+    <Dropdown class="w-60 z-20 pl-5 pr-5 w-full">
+      <NavLi class="my-2 align-center cursor-pointer">
+        Raymour & Flanigan<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={OrgStructure} target="_blank">Matrix Organization Structure</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={SDLC} target="_blank">SDLC Item Flows</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Release} target="_blank">Release Process</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        MEARS Group<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={Path} target="_blank">Developer Progression</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Landscape} target="_blank">IT Landscape</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Process} target="_blank">Development Process</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Electron} target="_blank">Electron Architecture</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        Worldwide Machinery<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={Workflow} target="_blank">Team Workflow</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={WWMMobile} target="_blank">Mobile Architecture</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={WWMLandscape} target="_blank">App Landscape</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        HP<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={SIOverview} target="_blank">Sudden Impact Overview</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={SIAL} target="_blank">Sudden Impact Architecture</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={CSM} target="_blank">Certified Scrum Master Certificate</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        X-Fab<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={Internship} target="_blank">Internship Projects Overview</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={PlasmaTraceSystem} target="_blank">Plasma Trace</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={ChemicalTracking} target="_blank">Chemical Tracking</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={MaskToolingManual} target="_blank">Mask Tooling Manual</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={DeviceMTM} target="_blank">Device MTM</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={MiscProjects} target="_blank">Misc. Projects</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={OtherInformationAboutMe} target="_blank">Other Information</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        Texas Tech<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={Lab1Project1} target="_blank">Lab 1 Project 1 PPT</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab1Project2Presentation} target="_blank">Lab 1 Project 2 PPT</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab1Project2} target="_blank">Lab 1 Project 2 DOC</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab2TrialVideo} target="_blank">Lab 1 Project 2 Trial Video</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab2FinalPresentation} target="_blank">Lab 2 PPT</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab2FinalReport} target="_blank">Lab 2 DOC</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab3FinalPresentation} target="_blank">Lab 3 PPT</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Lab3FinalReport} target="_blank">Lab 3 DOC</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={ProjectLabVFinalReport} target="_blank">Lab 4/5 DOC</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={MicroprocessorArchitectureFinalProjectR} target="_blank">Microprocessor Architecture Final Project</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={TrellisDesignforLHUCA} target="_blank">Misc. Engineering Project DOC</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={Transcript_Kromero} target="_blank">Transcript</DropdownItem>
+      </Dropdown>
+      <DropdownDivider />
+      <NavLi class="my-2 cursor-pointer">
+        Other<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
+      </NavLi>
+      <Dropdown class="w-44 z-20 bg-gray-150 dark:bg-gray-500 rounded-md overflow-y-auto h-full max-h-48">
+        <DropdownItem href={Sentiment} target="_blank">Twitter Sentiment Analysis</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={RTL} target="_blank">RTL-SDR</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={RedditListener} target="_blank">RedditListener</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href={RPi} target="_blank">RPi LED Display</DropdownItem>
+        <DropdownDivider />
+        <DropdownItem href="https://kgromero-react.netlify.app/" target="_blank">Old Site (React)</DropdownItem>
+      </Dropdown>
+    </Dropdown>
+    <NavLi href={BusinessCard} class="my-2 cursor-pointer text-black/60 dark:text-gray-400" target="_blank">Business Card</NavLi>
+    <DropdownDivider divClass="my-1 h-px bg-gray-100 dark:bg-gray-600 lg:display-none" />
+    <NavLi href="https://github.com/romero927/kgromero" target="_blank" class="sm:my-2 md:my-0 cursor-pointer">
+      <div class="rounded-lg text-gray-500 dark:text-gray-400 hover:bg-gray-50 hover:text-red-500 dark:hover:bg-gray-700 dark:hover:text-white sm:ml-0 sm:pl-0 sm:pt-1 sm:pb-1 sm:mb-1 md:p-3">
+        <Fa class="p-0 m-0" icon={faCode} />
+      </div>
+    </NavLi>
+    <DropdownDivider divClass="my-1 h-px bg-gray-100 dark:bg-gray-600 lg:display-none" />
+    <ResumeShellWrapper />      
+    <DropdownDivider divClass="my-1 h-px bg-gray-100 dark:bg-gray-600 lg:display-none" />
+    <DarkMode btnClass="text-gray-500 sm:my-2 md:my-0 dark:text-gray-400 hover:text-red-500 hover:bg-gray-50 dark:hover:bg-gray-700 dark:hover:text-white focus:outline-none rounded-lg sm:rounded-md text-sm p-2.5" />
+    <DropdownDivider divClass="my-1 h-px bg-gray-100 dark:bg-gray-600 lg:display-none" />
+  </NavUl>
+</Navbar>
+--------------------------------
+File: src\lib\components\Other.svelte
+Contents:
+<script>
+    import { Card, Hr, Button, Modal, Carousel, Thumbnails, Listgroup } from 'flowbite-svelte';
+    import { t } from '$lib/i18n';
+    import { lazyLoad } from '$lib/utils';
+    import Fa from 'svelte-fa';
+    import { faLink, faComments } from '@fortawesome/free-solid-svg-icons';
+    import ResumeShellWrapper from './ResumeShellWrapper.svelte';
+    import TravelGlobe from './TravelGlobe.svelte';
+
+  
+    let clickOutsideModal = false;
+    let size = "sm";
+    let index = 0;
+    let forward = true;
+  
+    const images = [
+      { alt: "My Family", src: "/images/family.webp", title: "My Family" },
+      { alt: "Wife and I", src: "/images/wife-and-me.webp", title: "Wife And I" },
+      { alt: "Ashley", src: "/images/wife.webp", title: "Ashley" },
+      { alt: "Charlotte and Ollie", src: "/images/dogs.webp", title: "Charlotte and Ollie" },
+    ];
+  </script>
+  
+  <Card class="items-center mx-auto max-w-full h-full bg-gray-50" padding="xs">
+    <b class="pt-1 pb-3">{$t.other.title}</b>
+    <Hr classHr="border w-full m-1" />
+    <br />
+    <ul class="space-y-4 text-sm">
+      <li>
+        <b>{$t.other.recentProjects}: </b> 
+        <ul class="ml-5 list-disc">
+          {#each $t.other.projects as project}
+            <li>
+              {#if project.link}
+                <a href={project.link} target="_blank">
+                  <Fa icon={faLink} pull="left" class="mr-1 mt-1"/>
+                </a>
+              {/if}
+              {project.name}
+            </li>
+          {/each}
+        </ul>
+      </li>
+      <Hr />
+      <li>
+        <b>{$t.other.wantToLearn}: </b>{$t.other.learningList}
+      </li>
+      <Hr />
+      <li>
+        <b>{$t.other.interests}:</b>
+        <button on:click={() => { clickOutsideModal = true; }}>
+          {$t.other.family}
+        </button>
+        , {$t.other.interestList}
+        , <TravelGlobe />Travel
+        <Modal title={$t.other.family} bind:open={clickOutsideModal} autoclose outsideclose {size}>
+          <Carousel {images} {forward} let:Indicators let:Controls bind:index imgClass="object-contain h-full w-fit rounded-sm" />
+          <Thumbnails {images} {forward} bind:index />
+        </Modal>
+      </li>
+      <Hr />
+      <li>
+        <Listgroup active items={$t.other.blogs} let:item class="w-48 text-center w-full bg-gray-50">
+          {item.name}
+        </Listgroup>
+      </li>
+    </ul>
+  </Card>
+--------------------------------
+File: src\lib\components\ResumeShellModal.svelte
+Contents:
+[Binary file, contents not shown]
+
+--------------------------------
+File: src\lib\components\ResumeShellWrapper.svelte
+Contents:
+<script>
+  import TerminalButton from './TerminalButton.svelte';
+  import ResumeShellModal from './ResumeShellModal.svelte';
+
+  let isModalOpen = false;
+
+  function openModal() {
+    isModalOpen = true;
+  }
+
+  function closeModal() {
+    isModalOpen = false;
+  }
+</script>
+
+<TerminalButton onClick={openModal}/>
+<ResumeShellModal isOpen={isModalOpen} onClose={closeModal} />
+--------------------------------
+File: src\lib\components\Skills.svelte
+Contents:
+<script>
+    import { Card, Hr } from 'flowbite-svelte';
+    import { t } from '$lib/i18n';
+  </script>
+  
+  <Card class="items-center mx-auto max-w-full h-full bg-gray-50" padding="xs">
+    <b class="pt-1 pb-3">{$t.skills.title}</b>
+    <Hr classHr="border w-full m-1" />
+    <br />
+    <ul class="space-y-2.5 text-xs p-0 m-0 ml-3 mr-3">
+      {#each Object.entries($t.skills.categories) as [category, skills]}
+        <li>
+          <b>{category}: </b>{skills}
+        </li>
+      {/each}
+    </ul>
+  </Card>
+  
+--------------------------------
+File: src\lib\components\TerminalButton.svelte
+Contents:
+<script>
+    import { Terminal } from 'lucide-svelte';
+    export let onClick;
+  </script>
+  
+  <button
+    on:click={onClick}
+    class="items-center justify-center w-5 h-4 ml-3 mt-2 mb-3 md:mt-3 bg-gray-600 text-green-400 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-500"
+  >
+  <Terminal class="mr-2 pb-1" size={20} />
+  </button>
+--------------------------------
+File: src\lib\components\TravelGlobe.svelte
+Contents:
+<script>
+  import { onMount } from 'svelte';
+  import * as THREE from 'three';
+  import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+  import { faGlobe } from '@fortawesome/free-solid-svg-icons';
+  import Fa from 'svelte-fa';
+
+  let showModal = false;
+  let container;
+  let status = 'Loading...';
+  let fallbackMode = false;
+  let hoverLabel = '';
+  let mouseX = 0;
+  let mouseY = 0;
+
+  const travelLocations = [
+    { lat: 29.7604, lng: -95.3698, label: 'Houston', lived: true },
+    { lat: 33.5779, lng: -101.8552, label: 'Lubbock', lived: true },
+    { lat: 29.3013, lng: -94.7977, label: 'Galveston', lived: true },
+    { lat: 40.7178, lng: -74.0431, label: 'Jersey City', lived: true },
+    { lat: 40.7128, lng: -74.0060, label: 'New York City', lived: false },
+    { lat: 47.6062, lng: -122.3321, label: 'Seattle', lived: false },
+    { lat: 37.7749, lng: -122.4194, label: 'San Francisco', lived: false },
+    { lat: 34.0522, lng: -118.2437, label: 'Los Angeles', lived: false },
+    { lat: 39.7392, lng: -104.9903, label: 'Denver', lived: false },
+    { lat: 33.4484, lng: -112.0740, label: 'Phoenix', lived: false },
+    { lat: 29.9511, lng: -90.0715, label: 'New Orleans', lived: false },
+    { lat: 43.6591, lng: -70.2568, label: 'Portland', lived: false },
+    { lat: 36.1699, lng: -115.1398, label: 'Las Vegas', lived: false },
+    { lat: 58.3019, lng: -134.4197, label: 'Juneau', lived: false },
+    { lat: 48.4284, lng: -123.3656, label: 'Victoria', lived: false },
+    { lat: 39.0997, lng: -94.5786, label: 'Kansas City', lived: false },
+    { lat: 25.7617, lng: -80.1918, label: 'Miami', lived: false },
+    { lat: 28.5383, lng: -81.3792, label: 'Orlando', lived: false },
+    { lat: 35.2271, lng: -80.8431, label: 'Charlotte', lived: false },
+    { lat: 36.8508, lng: -76.2859, label: 'Norfolk', lived: false },
+    { lat: 37.2707, lng: -76.7075, label: 'Colonial Williamsburg', lived: false },
+    { lat: 38.9072, lng: -77.0369, label: 'Washington D.C.', lived: false },
+    { lat: 42.3314, lng: -83.0458, label: 'Detroit', lived: false },
+    { lat: 41.8781, lng: -87.6298, label: 'Chicago', lived: false },
+    { lat: 43.0962, lng: -79.0377, label: 'Niagara Falls', lived: false },
+    { lat: 43.6532, lng: -79.3832, label: 'Toronto', lived: false },
+    { lat: 39.9526, lng: -75.1652, label: 'Philadelphia', lived: false },
+    { lat: 44.3876, lng: -68.2039, label: 'Acadia N.P.', lived: false },
+    { lat: 32.3078, lng: -64.7505, label: 'Bermuda', lived: false },
+    { lat: 19.7934, lng: -70.6884, label: 'Puerto Plata', lived: false },
+    { lat: 13.9094, lng: -60.9789, label: 'Saint Lucia', lived: false },
+    { lat: 17.5046, lng: -88.1962, label: 'Belize City', lived: false },
+    { lat: 20.4230, lng: -86.9223, label: 'Cozumel', lived: false },
+    { lat: 16.3067, lng: -86.5496, label: 'Roatan', lived: false },
+    { lat: 53.3498, lng: -6.2603, label: 'Dublin', lived: false },
+    { lat: 51.5074, lng: -0.1278, label: 'London', lived: false },
+    { lat: 41.3851, lng: 2.1734, label: 'Barcelona', lived: false },
+    { lat: 43.2965, lng: 5.3698, label: 'Marseille', lived: false },
+    { lat: 43.5528, lng: 7.0174, label: 'Cannes', lived: false },
+    { lat: 39.5696, lng: 2.6502, label: 'Palma de Mallorca', lived: false },
+    { lat: 38.9067, lng: 1.4206, label: 'Ibiza', lived: false },
+    { lat: 21.3069, lng: -157.8583, label: 'Honolulu', lived: false },
+    { lat: 32.7767, lng: -96.7970, label: 'Dallas', lived: false },
+    { lat: 30.2672, lng: -97.7431, label: 'Austin', lived: false },
+    { lat: 31.5493, lng: -97.1467, label: 'Waco', lived: false },
+    { lat: 35.1495, lng: -90.0490, label: 'Memphis', lived: false },
+    { lat: 30.3935, lng: -86.4958, label: 'Destin', lived: false },
+    { lat: 55.3422, lng: -131.6461, label: 'Ketchikan', lived: false },
+    { lat: 59.4583, lng: -135.3139, label: 'Skagway', lived: false },
+    { lat: 29.9749, lng: -92.1344, label: 'Abbeville', lived: false },
+    { lat: 33.7490, lng: -84.3880, label: 'Atlanta', lived: false },
+    { lat: 36.0544, lng: -112.1401, label: 'Grand Canyon', lived: false },
+    { lat: 34.8697, lng: -111.7610, label: 'Sedona', lived: false },
+    { lat: 36.9981, lng: -110.0953, label: 'Monument Valley', lived: false },
+    { lat: 39.6433, lng: -106.3781, label: 'Vail', lived: false },
+    { lat: 20.7984, lng: -156.3319, label: 'Maui', lived: false },
+    { lat: 40.3428, lng: -105.6836, label: 'Rocky Mountain N.P.', lived: false },
+    { lat: 29.1275, lng: -103.2425, label: 'Big Bend N.P.', lived: false },
+  ];
+
+  let cleanupGlobe = () => {};
+  let controls;
+  let autoRotate = true;
+
+  function toggleModal() {
+    if (showModal) {
+      cleanupGlobe();
+      status = 'Loading...';
+      fallbackMode = false;
+    } else {
+      setTimeout(createGlobe, 0);
+    }
+    showModal = !showModal;
+  }
+
+  function toggleSpin() {
+    autoRotate = !autoRotate;
+    if (controls) {
+      controls.autoRotate = autoRotate;
+    }
+  }
+
+  function createGlobe() {
+    const timeoutId = setTimeout(() => {
+      fallbackMode = true;
+    }, 10000); // 10 seconds timeout
+
+    try {
+      if (!container) {
+        throw new Error('Container not found');
+      }
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x121212); // Dark background
+
+      const camera = new THREE.PerspectiveCamera(
+        75,
+        container.clientWidth / container.clientHeight,
+        0.1,
+        1000
+      );
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(window.devicePixelRatio);
+      container.appendChild(renderer.domElement);
+
+      // Create Earth
+      const geometry = new THREE.SphereGeometry(1, 64, 64);
+      const texture = new THREE.TextureLoader().load(
+        'https://threejsfundamentals.org/threejs/resources/images/world.jpg',
+        () => {},
+        undefined,
+        (err) => {}
+      );
+      const material = new THREE.MeshPhongMaterial({ map: texture });
+      const earth = new THREE.Mesh(geometry, material);
+      scene.add(earth);
+
+      // Center on New York City
+      const nyc = { lat: 40.7128, lng: -74.0060 };
+      const phi = ((90 - nyc.lat) * Math.PI) / 180;
+      const theta = ((nyc.lng + 180) * Math.PI) / 180; // Longitude in radians
+
+      // Set initial globe rotation
+      earth.rotation.y = theta - Math.PI + 1;
+
+      // Position camera
+      const radius = 2.5;
+      camera.position.x = radius * Math.sin(phi) * Math.cos(theta);
+      camera.position.y = radius * Math.cos(phi);
+      camera.position.z = radius * Math.sin(phi) * Math.sin(theta);
+      camera.lookAt(earth.position);
+
+      // Add ambient light
+      const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+      scene.add(ambientLight);
+
+      // Add directional light
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      directionalLight.position.set(5, 3, 5);
+      scene.add(directionalLight);
+
+      // Add travel pins
+      const pins = [];
+      travelLocations.forEach((location) => {
+        const pinGeometry = new THREE.SphereGeometry(0.01, 32, 32);
+        const pinMaterial = new THREE.MeshBasicMaterial({
+          color: location.lived ? 0xffff00 : 0xff0000,
+        });
+        const pin = new THREE.Mesh(pinGeometry, pinMaterial);
+
+        const pinPhi = ((90 - location.lat) * Math.PI) / 180;
+        const pinTheta = ((location.lng + 180) * Math.PI) / 180;
+        const radius = 1 + 0.01; // Slightly above the globe surface
+        pin.position.x = -radius * Math.sin(pinPhi) * Math.cos(pinTheta);
+        pin.position.z = radius * Math.sin(pinPhi) * Math.sin(pinTheta);
+        pin.position.y = radius * Math.cos(pinPhi);
+
+        pin.userData = { label: location.label };
+        earth.add(pin);
+        pins.push(pin);
+      });
+
+      // Function to create border lines
+      function createBorderLine(polygon, color = 0xffffff) {
+        const lineMaterial = new THREE.LineBasicMaterial({ color: color });
+        const lineGeometry = new THREE.BufferGeometry();
+        const points = [];
+
+        const globeRadius = 1; // Radius of the globe
+        const altitude = 0.001; // Slightly above the globe surface
+
+        polygon.forEach(([lng, lat]) => {
+          const phi = ((90 - lat) * Math.PI) / 180;
+          const theta = ((lng + 180) * Math.PI) / 180;
+
+          const x = -(globeRadius + altitude) * Math.sin(phi) * Math.cos(theta);
+          const y = (globeRadius + altitude) * Math.cos(phi);
+          const z = (globeRadius + altitude) * Math.sin(phi) * Math.sin(theta);
+
+          points.push(new THREE.Vector3(x, y, z));
+        });
+
+        // Close the loop
+        if (points.length > 0) {
+          points.push(points[0]);
+        }
+
+        lineGeometry.setFromPoints(points);
+        const line = new THREE.Line(lineGeometry, lineMaterial);
+        return line;
+      }
+
+      // Add Country Borders
+      fetch('/country_borders.geojson')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const borderLines = new THREE.Group();
+
+          data.features.forEach((feature) => {
+            const coordinates = feature.geometry.coordinates;
+            const type = feature.geometry.type;
+
+            if (type === 'Polygon') {
+              coordinates.forEach((polygon) => {
+                const line = createBorderLine(polygon, 0x414a4c); // White color
+                borderLines.add(line);
+              });
+            } else if (type === 'MultiPolygon') {
+              coordinates.forEach((multiPolygon) => {
+                multiPolygon.forEach((polygon) => {
+                  const line = createBorderLine(polygon, 0x414a4c); // White color
+                  borderLines.add(line);
+                });
+              });
+            }
+          });
+
+          earth.add(borderLines);
+        })
+        .catch((error) => {
+          console.error('Error fetching country borders:', error);
+        });
+
+      // Add State Borders
+      fetch('/state_borders.geojson')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const stateBorderLines = new THREE.Group();
+
+          data.features.forEach((feature) => {
+            const coordinates = feature.geometry.coordinates;
+            const type = feature.geometry.type;
+
+            if (type === 'Polygon') {
+              coordinates.forEach((polygon) => {
+                const line = createBorderLine(polygon, 0x414a4c); // Green color for states
+                stateBorderLines.add(line);
+              });
+            } else if (type === 'MultiPolygon') {
+              coordinates.forEach((multiPolygon) => {
+                multiPolygon.forEach((polygon) => {
+                  const line = createBorderLine(polygon, 0x414a4c); // Green color for states
+                  stateBorderLines.add(line);
+                });
+              });
+            }
+          });
+
+          earth.add(stateBorderLines);
+        })
+        .catch((error) => {
+          console.error('Error fetching state borders:', error);
+        });
+
+      // Add OrbitControls
+      controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.25;
+      controls.enableZoom = true;
+      controls.minDistance = 1.5;
+      controls.maxDistance = 5.0;
+      controls.autoRotate = autoRotate;
+      controls.autoRotateSpeed = 0.5; // Slowed down rotation speed
+      controls.rotateSpeed = 0.3; // Slower dragging rotation
+      controls.target.set(0, 0, 0);
+      controls.update();
+
+      // Raycaster for mouse interaction
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      function onMouseMove(event) {
+        const rect = container.getBoundingClientRect();
+        mouse.x = ((event.clientX - rect.left) / container.clientWidth) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const intersects = raycaster.intersectObjects(pins);
+
+        if (intersects.length > 0) {
+          hoverLabel = intersects[0].object.userData.label;
+          mouseX = event.clientX;
+          mouseY = event.clientY;
+        } else {
+          hoverLabel = '';
+        }
+      }
+
+      container.addEventListener('mousemove', onMouseMove);
+
+      let animationFrameId;
+      function animate() {
+        animationFrameId = requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      function onWindowResize() {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+      }
+      window.addEventListener('resize', onWindowResize);
+      onWindowResize(); // Call once to ensure proper initial sizing
+
+      cleanupGlobe = () => {
+        cancelAnimationFrame(animationFrameId);
+        window.removeEventListener('resize', onWindowResize);
+        container.removeEventListener('mousemove', onMouseMove);
+        controls.dispose();
+        renderer.dispose();
+        if (container && container.contains(renderer.domElement)) {
+          container.removeChild(renderer.domElement);
+        }
+        geometry.dispose();
+        material.dispose();
+        texture.dispose();
+      };
+
+      clearTimeout(timeoutId);
+      status = ''; // Clear the loading text
+    } catch (error) {
+      clearTimeout(timeoutId);
+      fallbackMode = true;
+      console.error('Error creating globe:', error);
+    }
+  }
+
+  onMount(() => {
+    return () => {
+      cleanupGlobe();
+    };
+  });
+</script>
+
+<button on:click={toggleModal}>
+  <Fa icon={faGlobe} />
+</button>
+
+<!-- svelte-ignore a11y-no-static-element-interactions -->
+<!-- svelte-ignore a11y-click-events-have-key-events -->
+{#if showModal}
+  <div class="modal" on:click={toggleModal}>
+    <div class="modal-content" on:click|stopPropagation>
+      <h2 class="modal-title">My Travels</h2>
+      <button class="toggle-spin" on:click={toggleSpin}>
+        {autoRotate ? 'Stop Spin' : 'Start Spin'}
+      </button>
+      <span class="close" on:click={toggleModal}>&times;</span>
+      <div bind:this={container} class="globe-container">
+        {#if fallbackMode}
+          <div class="fallback-map">
+            <h3>Travel Map (Fallback Mode)</h3>
+            {#each travelLocations as location}
+              <div
+                class="location-pin"
+                style="left: {(location.lng + 180) / 360 * 100}%; top: {(90 - location.lat) / 180 * 100}%;">
+                <span class={location.lived ? 'lived' : ''}>{location.label}</span>
+              </div>
+            {/each}
+          </div>
+        {:else if status}
+          <p>{status}</p>
+        {/if}
+        {#if hoverLabel}
+          <div class="hover-label" style="left: {mouseX}px; top: {mouseY}px;">
+            {hoverLabel}
+          </div>
+        {/if}
+      </div>
+    </div>
+  </div>
+{/if}
+
+<style>
+  .modal {
+    display: flex;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    height: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-title {
+    color: #ffffff;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .close {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .toggle-spin {
+    position: absolute;
+    top: 10px;
+    right: 60px;
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .toggle-spin:hover {
+    background-color: #444;
+  }
+
+  .globe-container {
+    width: 100%;
+    height: calc(100% - 40px); /* Adjust for title */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .fallback-map {
+    width: 100%;
+    height: 100%;
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Equirectangular_projection_SW.jpg/640px-Equirectangular_projection_SW.jpg');
+    background-size: cover;
+    position: relative;
+  }
+
+  .location-pin {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+
+  .location-pin span {
+    background-color: red;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    user-select: none;
+  }
+
+  .location-pin span.lived {
+    background-color: yellow;
+    color: black;
+  }
+
+  .hover-label {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    pointer-events: none;
+    z-index: 1000;
+    transform: translate(10px, 10px);
+    user-select: none;
+  }
+</style>
+
+--------------------------------
+File: src\lib\assets\kgromero.html
+Contents:
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kyle Romero</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <style>
+    @font-face {
+      font-family: 'icomoon';
+      src: url('fonts/icomoon.eot?z1lat9');
+      src: url('fonts/icomoon.eot?z1lat9#iefix') format('embedded-opentype'),
+        url('fonts/icomoon.ttf?z1lat9') format('truetype'),
+        url('fonts/icomoon.woff?z1lat9') format('woff'),
+        url('fonts/icomoon.svg?z1lat9#icomoon') format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: 'icomoon' !important;
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    .icon-gitlab .path1:before {
+      content: "\e906";
+      color: rgb(252, 109, 38);
+    }
+
+    .icon-gitlab .path2:before {
+      content: "\e907";
+      margin-left: -1em;
+      color: rgb(226, 67, 41);
+    }
+
+    .icon-gitlab .path3:before {
+      content: "\e908";
+      margin-left: -1em;
+      color: rgb(252, 109, 38);
+    }
+
+    .icon-gitlab .path4:before {
+      content: "\e909";
+      margin-left: -1em;
+      color: rgb(252, 163, 38);
+    }
+
+    .icon-gitlab .path5:before {
+      content: "\e90a";
+      margin-left: -1em;
+      color: rgb(226, 67, 41);
+    }
+
+    .icon-gitlab .path6:before {
+      content: "\e90b";
+      margin-left: -1em;
+      color: rgb(252, 109, 38);
+    }
+
+    .icon-gitlab .path7:before {
+      content: "\e90c";
+      margin-left: -1em;
+      color: rgb(252, 163, 38);
+    }
+
+    .icon-gitlab .path8:before {
+      content: "\e90d";
+      margin-left: -1em;
+      color: rgb(226, 67, 41);
+    }
+
+    .icon-meetup .path1:before {
+      content: "\e901";
+      color: rgb(255, 255, 255);
+    }
+
+    .icon-meetup .path2:before {
+      content: "\e902";
+      margin-left: -1.5em;
+      color: rgb(240, 1, 1);
+    }
+
+    .icon-meetup .path3:before {
+      content: "\e903";
+      margin-left: -1.5em;
+      color: rgb(3, 3, 3);
+    }
+
+    .icon-blogger:before {
+      content: "\e900";
+    }
+
+    .icon-exercism:before {
+      content: "\e601";
+    }
+
+    .icon-telegram:before {
+      content: "\e904";
+    }
+
+    .icon-flickr:before {
+      content: "\f16e";
+    }
+
+    .icon-medium:before {
+      content: "\f23a";
+    }
+
+    .icon-heart:before {
+      content: "\f004";
+    }
+
+    .icon-book:before {
+      content: "\f02d";
+    }
+
+    .icon-linkedin:before {
+      content: "\f08c";
+    }
+
+    .icon-twitter:before {
+      content: "\f099";
+    }
+
+    .icon-github:before {
+      content: "\f09b";
+    }
+
+    .icon-link:before {
+      content: "\f0c1";
+    }
+
+    .icon-bars:before {
+      content: "\f0c9";
+    }
+
+    .icon-pinterest:before {
+      content: "\f0d2";
+    }
+
+    .icon-googleplus:before {
+      content: "\f0d5";
+    }
+
+    .icon-circle:before {
+      content: "\f111";
+    }
+
+    .icon-code:before {
+      content: "\f121";
+    }
+
+    .icon-youtube:before {
+      content: "\f167";
+    }
+
+    .icon-stackoverflow:before {
+      content: "\f16c";
+    }
+
+    .icon-bitbucket:before {
+      content: "\f171";
+    }
+
+    .icon-tumblr:before {
+      content: "\f173";
+    }
+
+    .icon-dribbble:before {
+      content: "\f17d";
+    }
+
+    .icon-skype:before {
+      content: "\f17e";
+    }
+
+    .icon-foursquare:before {
+      content: "\f180";
+    }
+
+    .icon-gittip:before {
+      content: "\f184";
+    }
+
+    .icon-gratipay:before {
+      content: "\f184";
+    }
+
+    .icon-stackexchange:before {
+      content: "\f18d";
+    }
+
+    .icon-vimeo:before {
+      content: "\f194";
+    }
+
+    .icon-graduation-cap:before {
+      content: "\f19d";
+    }
+
+    .icon-language:before {
+      content: "\f1ab";
+    }
+
+    .icon-child:before {
+      content: "\f1ae";
+    }
+
+    .icon-behance:before {
+      content: "\f1b5";
+    }
+
+    .icon-spotify:before {
+      content: "\f1bc";
+    }
+
+    .icon-soundcloud:before {
+      content: "\f1be";
+    }
+
+    .icon-codepen:before {
+      content: "\f1cb";
+    }
+
+    .icon-hackernews:before {
+      content: "\f1d4";
+    }
+
+    .icon-lastfm:before {
+      content: "\f202";
+    }
+
+    .icon-angellist:before {
+      content: "\f209";
+    }
+
+    .icon-facebook:before {
+      content: "\f230";
+    }
+
+    .icon-instagram:before {
+      content: "\e905";
+    }
+
+    .icon-trophy:before {
+      content: "\e605";
+    }
+
+    .icon-office:before {
+      content: "\e606";
+    }
+
+    .icon-clock:before {
+      content: "\e60a";
+    }
+
+    .icon-reddit:before {
+      content: "\e609";
+    }
+
+    .icon-profile:before {
+      content: "\e600";
+    }
+
+    .icon-tools:before {
+      content: "\e034";
+    }
+
+    .icon-location:before {
+      content: "\e602";
+    }
+
+    .icon-mail:before {
+      content: "\e603";
+    }
+
+    .icon-phone:before {
+      content: "\e03f";
+    }
+
+    .icon-newspaper:before {
+      content: "\e607";
+    }
+
+    .icon-chevron-down:before {
+      content: "\e60c";
+    }
+
+    .icon-chevron-up:before {
+      content: "\e60d";
+    }
+
+    .icon-dots-three-horizontal:before {
+      content: "\e60b";
+    }
+
+    .icon-thumbs-up:before {
+      content: "\e604";
+    }
+
+    .icon-board:before {
+      content: "\e608";
+    }
+
+    .relative {
+      position: relative;
+    }
+
+    .clear-margin {
+      margin: 0;
+    }
+
+    .space-top {
+      margin-top: 10px;
+    }
+
+    .space-right {
+      margin-right: 10px;
+    }
+
+    .space-bottom {
+      margin-bottom: 10px;
+    }
+
+    .mr-5 {
+      margin-right: 5px;
+    }
+
+    .mr-10 {
+      margin-right: 10px;
+    }
+
+    .ml-5 {
+      margin-left: 5px;
+    }
+
+    .labels {
+      line-height: 2;
+    }
+
+    .label-keyword {
+      display: inline-block;
+      background: #7eb0db;
+      color: white;
+      font-size: 0.9em;
+      padding: 5px;
+      border: 1px solid #357ebd;
+      margin-right: 5px;
+    }
+
+    .label-keyword:last-child {
+      margin-right: 0;
+    }
+
+    .link-disguise {
+      color: inherit;
+    }
+
+    .link-disguise:hover {
+      color: inherit;
+    }
+
+    .clear-margin {
+      margin: 0;
+    }
+
+    @media (max-width: 992px) {
+      .clear-margin-sm {
+        margin-bottom: 0;
+      }
+    }
+
+    .fs-lg {
+      font-size: 1.33333333em;
+      line-height: 0.75em;
+      vertical-align: -15%;
+    }
+
+    .fs-2x {
+      font-size: 2em;
+    }
+
+    .fs-3x {
+      font-size: 3em;
+    }
+
+    .fs-4x {
+      font-size: 4em;
+    }
+
+    .btn-circle-sm {
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      border-radius: 50%;
+      text-align: center;
+      padding: 0;
+      outline: none !important;
+    }
+
+    /* the version when the icon file is last updated */
+    @font-face {
+      font-family: 'jst-elegant';
+      src: url("//unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?f218wo");
+      src: url("//unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.eot?f218wo#iefix") format('embedded-opentype'), url("//unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.ttf?f218wo") format('truetype'), url("//unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.woff?f218wo") format('woff'), url("//unpkg.com/jsonresume-theme-elegant@1.12.0/assets/icomoon/fonts/icomoon.svg?f218wo#icomoon") format('svg');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    [class^="icon-"],
+    [class*=" icon-"] {
+      /* use !important to prevent issues with browser extensions that change fonts */
+      font-family: 'jst-elegant' !important;
+    }
+
+    body {
+      font-family: 'Lato';
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .main {
+      padding: 5px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #e6e6e6;
+      border-radius: 3px;
+      min-height: 300px;
+      padding: 10px 0;
+    }
+
+    .card-nested {
+      min-height: 0;
+      border-width: 1px 0 0 0;
+    }
+
+    .card-nested:before,
+    .card-nested:after {
+      content: " ";
+      display: table;
+    }
+
+    .card-nested:after {
+      clear: both;
+    }
+
+    @media (max-width: 480px) {
+      .card-nested {
+        padding: 5px 0;
+      }
+    }
+
+    .background-card {
+      padding: 10px 20px;
+    }
+
+    .card-wrapper {
+      padding: 5px;
+    }
+
+    @media (max-width: 992px) {
+      .card-wrapper {
+        float: none !important;
+      }
+    }
+
+    .background-details .detail {
+      display: table;
+    }
+
+    .background-details .detail .icon {
+      min-width: 45px;
+      max-width: 45px;
+      text-align: center;
+    }
+
+    .background-details .detail .info {
+      width: 100%;
+    }
+
+    .background-details .detail .title,
+    .background-details .detail .icon {
+      color: #707070;
+    }
+
+    .background-details .detail .mobile-title {
+      display: none;
+    }
+
+    @media (max-width: 480px) {
+      .background-details .detail .mobile-title {
+        display: inline-block;
+        margin-left: 5px;
+        font-weight: bold;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+    }
+
+    .background-details .detail .icon,
+    .background-details .detail .info {
+      display: table-cell;
+      padding: 0 10px;
+    }
+
+    @media (max-width: 480px) {
+      .background-details .detail {
+        display: block;
+      }
+
+      .background-details .detail .icon {
+        max-width: inherit;
+        min-width: inherit;
+        text-align: left;
+      }
+
+      .background-details .detail .icon,
+      .background-details .detail .info {
+        display: block;
+        padding: 10px 0;
+      }
+
+      .background-details .detail .title {
+        display: none;
+      }
+    }
+
+    .info .content.has-sidebar {
+      width: 80%;
+      box-sizing: border-box;
+      float: left;
+      padding: 0 10px;
+      border-right: 1px solid #cdcdcd;
+    }
+
+    @media (max-width: 992px) {
+      .info .content.has-sidebar {
+        width: 100%;
+        border-right: 0;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info .content.has-sidebar {
+        padding: 0 2px;
+      }
+    }
+
+    .info .sidebar {
+      margin-left: 80%;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    @media (max-width: 480px) {
+      ul {
+        padding-left: 25px;
+      }
+    }
+
+    .current-event {
+      font-size: 8px;
+      color: #5ACE24;
+      position: absolute;
+      right: 100%;
+      top: 4px;
+      left: -10px;
+    }
+
+    .mop-wrapper>p:last-child {
+      margin: 0;
+    }
+
+    /*
+    Credits: http://codyhouse.co/demo/smart-fixed-navigation/index.html
+*/
+    .floating-nav-trigger {
+      width: 50px;
+      height: 50px;
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+      -webkit-transition: background-color 0.5s ease;
+      -o-transition: background-color 0.5s ease;
+      transition: background-color 0.5s ease;
+      display: block;
+      border-radius: 50%;
+      text-align: center;
+      background-color: white;
+      font-size: 1.5em;
+      color: #357ebd;
+      z-index: 100;
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      text-decoration: none !important;
+    }
+
+    .floating-nav-trigger>[class^="icon-"],
+    .floating-nav-trigger [class*=" icon-"],
+    .floating-nav-trigger>.close-icon {
+      line-height: 50px;
+    }
+
+    .floating-nav-trigger .close-icon {
+      display: none;
+    }
+
+    .floating-nav-trigger:hover {
+      color: #1f496e;
+      background-color: #e6e6e6;
+    }
+
+    .floating-nav-trigger.is-open {
+      -webkit-box-shadow: none;
+      box-shadow: none;
+    }
+
+    .floating-nav-trigger.is-open .close-icon {
+      display: inherit;
+    }
+
+    .floating-nav-trigger.is-open .icon-bars {
+      display: none;
+    }
+
+    .floating-nav-trigger.is-open:hover {
+      background-color: white;
+    }
+
+    .floating-nav {
+      -webkit-transform: scale(0);
+      -ms-transform: scale(0);
+      -o-transform: scale(0);
+      transform: scale(0);
+      -webkit-transform-origin: 100% 100%;
+      -moz-transform-origin: 100% 100%;
+      -ms-transform-origin: 100% 100%;
+      transform-origin: 100% 100%;
+      -webkit-transition: transform 0.3s, visibility 0s 0.3s;
+      -o-transition: transform 0.3s, visibility 0s 0.3s;
+      transition: transform 0.3s, visibility 0s 0.3s;
+      -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.24);
+      position: fixed;
+      z-index: 50;
+      right: 10px;
+      bottom: 10px;
+      background-color: white;
+      width: 90%;
+      max-width: 400px;
+      visibility: hidden;
+      overflow: hidden;
+    }
+
+    .floating-nav ul {
+      font-size: 1.2em;
+      margin: 0;
+    }
+
+    .floating-nav ul li {
+      border-bottom: 1px solid #eff2f6;
+    }
+
+    .floating-nav ul li a {
+      padding: 20px;
+      text-decoration: none;
+      color: #357ebd;
+      display: block;
+    }
+
+    .floating-nav ul li a:hover {
+      color: #1f496e;
+    }
+
+    .floating-nav ul li:last-child {
+      border-bottom: 0;
+    }
+
+    .floating-nav.is-visible {
+      -webkit-transform: scale(1);
+      -ms-transform: scale(1);
+      -o-transform: scale(1);
+      transform: scale(1);
+      -webkit-transition: transform 0.3s, visibility 0s 0s;
+      -o-transition: transform 0.3s, visibility 0s 0s;
+      transition: transform 0.3s, visibility 0s 0s;
+      visibility: visible;
+    }
+
+    @media (max-width: 992px) {
+      .profile-card-wrapper {
+        position: relative;
+      }
+    }
+
+    .profile-card-wrapper .profile-card {
+      padding: 10px;
+    }
+
+    .profile-pic {
+      padding: 20px 0;
+    }
+
+    @media (max-width: 992px) {
+      .profile-pic {
+        padding: 10px 0;
+      }
+    }
+
+    .profile-pic img {
+      width: 100px;
+      height: 100px;
+    }
+
+    @media (max-width: 992px) {
+      .name {
+        margin-top: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .contact-details {
+        text-align: center;
+      }
+    }
+
+    .contact-details .detail {
+      display: table;
+      padding: 10px 0;
+    }
+
+    .contact-details .detail .icon {
+      padding: 0 10px;
+      color: #707070;
+    }
+
+    @media (max-width: 992px) {
+      .contact-details .detail .icon {
+        padding: 0 5px 0 0;
+      }
+    }
+
+    .contact-details .detail .info {
+      font-size: 0.8em;
+    }
+
+    .contact-details .detail .icon,
+    .contact-details .detail .info {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+      .contact-details .detail {
+        position: relative;
+        float: left;
+        width: 100%;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .contact-details .detail {
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding: 10px;
+      }
+
+      .contact-details .detail .icon,
+      .contact-details .detail .info {
+        display: inline-block;
+      }
+    }
+
+    @media (max-width: 992px) and (min-width: 768px) {
+      .contact-details .detail {
+        float: left;
+        width: 25%;
+      }
+    }
+
+    .social-links {
+      line-height: 2.5;
+    }
+
+    .social-link {
+      margin-left: 5px;
+      min-width: 35px;
+      display: inline-block;
+    }
+
+    .social-link:first-child {
+      margin-left: 0;
+    }
+
+    .social-link:hover {
+      text-decoration: none;
+    }
+
+    .link-github {
+      color: #454545;
+    }
+
+    .link-github:hover,
+    .link-github:focus {
+      text-decoration: none;
+      color: #2b2b2b;
+    }
+
+    .link-twitter {
+      color: #33ccff;
+    }
+
+    .link-twitter:hover,
+    .link-twitter:focus {
+      text-decoration: none;
+      color: #00bfff;
+    }
+
+    .link-blog {
+      color: #f36f24;
+    }
+
+    .link-blog:hover,
+    .link-blog:focus {
+      text-decoration: none;
+      color: #d8560c;
+    }
+
+    .link-linkedin {
+      color: #007bb6;
+    }
+
+    .link-linkedin:hover,
+    .link-linkedin:focus {
+      text-decoration: none;
+      color: #005983;
+    }
+
+    .link-skype {
+      color: #12A5F4;
+    }
+
+    .link-skype:hover,
+    .link-skype:focus {
+      text-decoration: none;
+      color: #0986ca;
+    }
+
+    .link-instagram {
+      color: #e4405f;
+    }
+
+    .link-instagram:hover,
+    .link-instagram:focus {
+      text-decoration: none;
+      color: #d31e40;
+    }
+
+    .link-stackoverflow {
+      color: #8e8e92;
+    }
+
+    .link-stackoverflow:hover,
+    .link-stackoverflow:focus {
+      text-decoration: none;
+      color: #747479;
+    }
+
+    .link-stackexchange {
+      color: #62b0df;
+    }
+
+    .link-stackexchange:hover,
+    .link-stackexchange:focus {
+      text-decoration: none;
+      color: #389bd6;
+    }
+
+    .link-lastfm {
+      color: #d12127;
+    }
+
+    .link-lastfm:hover,
+    .link-lastfm:focus {
+      text-decoration: none;
+      color: #a51a1f;
+    }
+
+    .link-soundcloud {
+      color: #e8822d;
+    }
+
+    .link-soundcloud:hover,
+    .link-soundcloud:focus {
+      text-decoration: none;
+      color: #cc6916;
+    }
+
+    .link-googleplus {
+      color: #dd4b39;
+    }
+
+    .link-googleplus:hover,
+    .link-googleplus:focus {
+      text-decoration: none;
+      color: #c23321;
+    }
+
+    .link-youtube {
+      color: #dd4b39;
+    }
+
+    .link-youtube:hover,
+    .link-youtube:focus {
+      text-decoration: none;
+      color: #c23321;
+    }
+
+    .link-pinterest {
+      color: #bd091f;
+    }
+
+    .link-pinterest:hover,
+    .link-pinterest:focus {
+      text-decoration: none;
+      color: #8c0717;
+    }
+
+    .link-gratipay {
+      color: #630;
+    }
+
+    .link-gratipay:hover,
+    .link-gratipay:focus {
+      text-decoration: none;
+      color: #331a00;
+    }
+
+    .link-vimeo {
+      color: #17b3e8;
+    }
+
+    .link-vimeo:hover,
+    .link-vimeo:focus {
+      text-decoration: none;
+      color: #128fba;
+    }
+
+    .link-behance {
+      color: #2c98cf;
+    }
+
+    .link-behance:hover,
+    .link-behance:focus {
+      text-decoration: none;
+      color: #2379a5;
+    }
+
+    .link-codepen {
+      color: #1c1c1c;
+    }
+
+    .link-codepen:hover,
+    .link-codepen:focus {
+      text-decoration: none;
+      color: #020202;
+    }
+
+    .link-foursquare {
+      color: #fa4778;
+    }
+
+    .link-foursquare:hover,
+    .link-foursquare:focus {
+      text-decoration: none;
+      color: #f91554;
+    }
+
+    .link-reddit {
+      color: #545454;
+    }
+
+    .link-reddit:hover,
+    .link-reddit:focus {
+      text-decoration: none;
+      color: #3b3b3b;
+    }
+
+    .link-spotify {
+      color: #acd200;
+    }
+
+    .link-spotify:hover,
+    .link-spotify:focus {
+      text-decoration: none;
+      color: #829f00;
+    }
+
+    .link-tumblr {
+      color: #2d4661;
+    }
+
+    .link-tumblr:hover,
+    .link-tumblr:focus {
+      text-decoration: none;
+      color: #1d2d3e;
+    }
+
+    .link-dribbble {
+      color: #ce366f;
+    }
+
+    .link-dribbble:hover,
+    .link-dribbble:focus {
+      text-decoration: none;
+      color: #a82959;
+    }
+
+    .link-facebook {
+      color: #4b6daa;
+    }
+
+    .link-facebook:hover,
+    .link-facebook:focus {
+      text-decoration: none;
+      color: #3b5687;
+    }
+
+    .link-angellist {
+      color: black;
+    }
+
+    .link-angellist:hover,
+    .link-angellist:focus {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .link-bitbucket {
+      color: #205081;
+    }
+
+    .link-bitbucket:hover,
+    .link-bitbucket:focus {
+      text-decoration: none;
+      color: #163758;
+    }
+
+    .link-hackernews {
+      color: #ff6600;
+    }
+
+    .link-hackernews:hover,
+    .link-hackernews:focus {
+      text-decoration: none;
+      color: #cc5200;
+    }
+
+    .link-exercism {
+      color: #d81d4e;
+    }
+
+    .link-exercism:hover,
+    .link-exercism:focus {
+      text-decoration: none;
+      color: #ab173e;
+    }
+
+    .link-blogger {
+      color: #FF9234;
+    }
+
+    .link-blogger:hover,
+    .link-blogger:focus {
+      text-decoration: none;
+      color: #ff7701;
+    }
+
+    .link-medium {
+      color: #00AB6C;
+    }
+
+    .link-medium:hover,
+    .link-medium:focus {
+      text-decoration: none;
+      color: #00784c;
+    }
+
+    .link-flickr {
+      color: black;
+    }
+
+    .link-flickr:hover,
+    .link-flickr:focus {
+      text-decoration: none;
+      color: #000000;
+    }
+
+    .link-telegram {
+      color: #3BABDD;
+    }
+
+    .link-telegram:hover,
+    .link-telegram:focus {
+      text-decoration: none;
+      color: #2291c3;
+    }
+
+    .card-skills {
+      position: relative;
+    }
+
+    .skill-level {
+      border-radius: 3px;
+      position: absolute;
+      top: 10px;
+      bottom: 10px;
+      left: 0;
+      width: 10px;
+      box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.2);
+    }
+
+    .skill-level .skill-progress {
+      position: absolute;
+      border-radius: 3px;
+      bottom: 0;
+      width: 100%;
+      -webkit-transition: height 1s ease;
+    }
+
+    .skill-level .skill-progress.beginner {
+      height: 50%;
+      background: #e74c3c;
+    }
+
+    .skill-level .skill-progress.intermediate {
+      height: 70%;
+      background: #f1c40f;
+    }
+
+    .skill-level .skill-progress.advanced {
+      height: 80%;
+      background: #428bca;
+    }
+
+    .skill-level .skill-progress.master {
+      height: 95%;
+      background: #5cb85c;
+    }
+
+    .skill-info {
+      margin-left: 15px;
+    }
+
+    @media (max-width: 480px) {
+      .skill-info {
+        margin-left: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quote {
+        font-size: inherit;
+      }
+    }
+
+    .icon-meetup .path2:before {
+      margin-left: 0;
+    }
+
+    @media print {
+      a[href]:after {
+        content: none !important;
+      }
+
+      .profile-card {
+        text-align: center;
+      }
+
+      .profile-pic {
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .profile-pic img {
+        border-radius: 0;
+      }
+
+      .name-and-profession {
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 15px;
+      }
+
+      .contact-details .detail {
+        position: relative;
+        float: left;
+        width: 25%;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding: 0;
+      }
+
+      .floating-nav,
+      .floating-nav-trigger {
+        display: none;
+      }
+
+      .pagebreak {
+        page-break-before: always;
+      }
+    }
+  </style>
+</head>
+
+<body itemscope="itemscope" itemtype="http://schema.org/Person">
+  <div class="container-fluid">
+    <div class="row main clearfix"><a class="js-floating-nav-trigger floating-nav-trigger" href="#"><i
+          class="icon-bars"></i><span class="close-icon">&times;</span></a>
+      <nav class="floating-nav js-floating-nav">
+        <ul class="list-unstyled">
+          <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
+          <li><a href="#work-experience"><i class="mr-10 icon-office"></i>Work Experience</a></li>
+          <li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li>
+          <li><a href="#references"><i class="mr-10 icon-thumbs-up"></i>References</a></li>
+        </ul>
+      </nav>
+      <section class="col-md-3 card-wrapper profile-card-wrapper affix">
+        <div class="card profile-card"><span class="profile-pic-container">
+            <div class="profile-pic"><img class="media-object img-circle center-block" data-src="holder.js/100x100"
+                alt="Kyle Romero" src="kromero.jpg" itemprop="image" /></div>
+            <div class="name-and-profession text-center">
+              <h3 itemprop="name"><b>Kyle Romero</b></h3>
+              <h5 class="text-muted" itemprop="jobTitle">Director of Software Development</h5>
+            </div>
+          </span>
+          <hr />
+          <div class="contact-details clearfix">
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">1
+                Harborside Pl Apt 752, Jersey City, New Jersey, US, 07311</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-phone"></i></span><span class="info"
+                itemprop="telephone">(281) 857-9006</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-mail"></i></span><span class="info"><a
+                  class="link-disguise" href="mailto:kgromero@gmail.com" itemprop="email">kgromero@gmail.com</a></span>
+            </div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-link"></i></span><span class="info"><a
+                  href="https://kgromero.com" target="_blank">https://kgromero.com</a></span></div>
+            <div class="profile-pic"><img class="media-object img-square center-block" data-src="holder.js/100x100"
+                alt="vCard" src="QR.png" itemprop="image" /></div>
+          </div>
+          <hr />
+          <div class="social-links text-center">
+            <div><a class="fs-2x social-link link-linkedin icon-linkedin" href="https://www.linkedin.com/in/kyleromero/"
+                target="_blank" data-toggle="tooltip" title="Kyle Romero on Linkedin"></a><a
+                class="fs-2x social-link link-github icon-github" href="https://github.com/romero927" target="_blank"
+                data-toggle="tooltip" title="Kyle Romero on Github"></a></div>
+          </div>
+        </div>
+      </section>
+      <section class="col-md-9 card-wrapper pull-right">
+        <div class="card background-card">
+          <h4 class="text-uppercase">Background</h4>
+          <hr />
+          <div class="background-details">
+            <div class="detail" id="about">
+              <div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">About</h4>
+                <div class="card card-nested">
+                  <div class="content mop-wrapper" itemprop="description">
+                    <p> Hello! My name is Kyle Romero.
+                      I am a director of software development, with 4 years of management experience and 10 years of
+                      full-stack development, technical lead, and architecture experience, living in Jersey City, NJ.
+                      I have a Bachelor's Degree in Computer Engineering from Texas Tech University, and have worked in
+                      the IT field since 2007 focused on internal software development.
+                      Currently, I am a director of operations technology (software solutions for field work), and
+                      previously was a team lead and senior developer at Worldwide Machinery, and a technical lead at
+                      HP.
+                      I have extensive knowledge of all aspects of a successful software development organization, and
+                      have used many different technologies and methodologies over the years.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="work-experience">
+              <div class="icon"><i class="fs-lg icon-office"></i><span class="mobile-title">Work Experience</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">Work Experience</h4>
+                <ul class="list-unstyled clear-margin">
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><i class="icon-circle current-event" rel="tooltip"
+                          title="Currently Working" data-placement="left"></i><strong>Director - Operations
+                          Technology</strong>,&nbsp;<a href="http://www.infrasourceus.com" target="_blank">InfraSource,
+                          A Quanta Services Company (part of MEARS Group)</a></p>
+                      <p class="text-muted"><small><span class="space-right">Oct, 2017 - Present<br />(Director of Operations Technology: 2021 to Current)<br />
+                        (Senior Operations Technology Manager: 2020 to 2021)<br />
+                        (Operations Technology Manager: 2017 to 2020)</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Construction and Professional Services (Natural Gas, Oil, and Electric Power Industry)</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Direct-Report to CIO of MEARS Group, helping to define and drive software development
+                            strategy</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Head of Software Development for InfraSource</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Manage teams of internal and external developers and project managers</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Coordinate external and internal teams using Agile processes</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Travel as needed to various sites around US to deploy new software solutions and manage IT
+                            relationship with other groups</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Interface between technical and non-technical personnel; help to bridge the communication
+                            gap</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Provide consultation on software development initiatives across MEARS Group</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Explore and architect new technology solutions (focused on digital transformation)</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Led team through process of making internal tools SOX-Compliant</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Worked to develop high availability infrastructure architecture for apps</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Create learning curriculum for new developers and provide training / KT sessions</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Develop and implement strategy to build out company's internal tools using appropriate
+                            technologies</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Help team manage DevOps, Agile, GitFlow, CICD, and PM processes</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Help team administer various systems</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Help team with prototyping / hands-on exploration of new technologies</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Achievements</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>2021:</strong> Promoted to Director of Operations Technology after 1
+                                      year as Senior Manager</li>
+                                    <li><strong>2021:</strong> Nominated to MEARS Group Disruptor Team (Company
+                                      Think-Tank)</li>
+                                    <li><strong>2021:</strong> Nominated to Quanta Leadership Academy</li>
+                                    <li><strong>2020:</strong> Promoted to Senior Manager of Operations Technology after
+                                      2.5 years of successful innovation</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <br />
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies (Architecture)</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> C#, ASP.NET MVC, ASP.NET MVC API, Blazor</li>
+                                    <li><strong>Scripting:</strong> Python</li>
+                                    <li><strong>Javascript:</strong> Angular, React, Electron, Node, NPM, Webpack,
+                                      Gatsby, Bootstrap</li>
+                                    <li><strong>DB:</strong> MS-SQL, SQLite</li>
+                                    <li><strong>BI:</strong> PowerBI, SSRS</li>
+                                    <li><strong>Cloud:</strong> Azure</li>
+                                    <li><strong>Machine Learning:</strong> Sentiment Analysis via Azure Cognitive
+                                      Services + Logic App</li>
+                                    <li><strong>Development:</strong> Azure DevOps, Github, Visual Studio, VS Code</li>
+                                    <li><strong>IoT:</strong> RPi + Raspbian + Adafruit Accessories (Python) </li>
+                                    <li><strong>Servers:</strong> Windows, Ubuntu</li>
+                                    <li><strong>Processes:</strong> DevOps, Agile, GitFlow, CICD</li>
+                                    <li><strong>Other:</strong> Sharepoint Online, Twilio, Slack, Trello, LucidCharts
+                                    </li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Team Lead / Senior Software Developer</strong>,&nbsp;<a
+                          href="https://wwmach.com" target="_blank">Worldwide Machinery</a></p>
+                      <p class="text-muted"><small><span class="space-right">Apr, 2016 - Oct, 2017</span><span><i
+                              class="icon-clock mr-5"></i>1 year 5 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Heavy Machinery Rental and Sales Company</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Manage project workflow using Agile Scrum methodology</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Manage junior developers' workloads</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Develop modern ASP.NET MVC WebAPI</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Develop modern Mobile-first Web Application using React, Redux, Typescript (ES6), Node.js +
+                            Express + NPM, Babel, Webpack, and SASS</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Maintain legacy ERP application using .NET Winforms (C#, MS SQL)</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Implement and Maintain Project and DevOps Processes using: JIRA, Bitbucket (GIT), TeamCity,
+                            Trello, Slack, Lucidcharts</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Proactively identify process improvements, as well as project opportunities</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Maintain / troubleshoot hardware infrastructure as needed (Windows / Ubuntu Servers)</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> C#, ASP.NET MVC API, WinForms</li>
+                                    <li><strong>Javascript:</strong> React, Redux, Typescript (ES6), Node.js + Express +
+                                      NPM + PM2, Babel, Webpack, SASS, NGINX Reverse Proxy</li>
+                                    <li><strong>DB:</strong> MS-SQL</li>
+                                    <li><strong>Cloud:</strong> DigitalOcean</li>
+                                    <li><strong>Containerization:</strong> Docker</li>
+                                    <li><strong>Development:</strong> JIRA, TeamCity, Bitbucket (GIT), Visual Studio, VS
+                                      Code, Trello, Lucidcharts</li>
+                                    <li><strong>Processes:</strong> DevOps, Agile, GitFlow, CICD</li>
+                                    <li><strong>Servers:</strong> Windows, Ubuntu</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Technical Lead (IT Developer / Engineer
+                          III)</strong>,&nbsp;<a href="https://hp.com" target="_blank">HP Inc.</a></p>
+                      <p class="text-muted"><small><span class="space-right">Dec, 2013 - Feb, 2016</span><span><i
+                              class="icon-clock mr-5"></i>2 years 1 month</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Consumer IT Products</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Led development team working on enterprise level product quality / escalation management
+                            tool.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Helped manage both onshore and offshore, full time and contingent developers.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Helped to define and improve processes used on project, including development of a
+                            customized disciplined agile methodology and setting project timelines.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Administered Team Foundation Server (source and requirements).</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Managed quality control and workloads for developers on project.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Managed release process for tool.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Worked with business to define requirements and develop architecture for project.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Familiar with all aspects of project, from both technical and business standpoints.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>While working on .NET Applications, received exposure to Big Data technologies, such as
+                            Hadoop and HP Vertica, as well as Dashboarding Technologies, such as Qlikview and Tableau.
+                          </p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>During the year 2015, led team to successfully complete clone of our systems to be used on
+                            both sides of HP after the company split into two.</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> VB.NET, C#, ASP.NET</li>
+                                    <li><strong>Javascript:</strong> jQueryUI, jQuery</li>
+                                    <li><strong>DB:</strong> MS-SQL</li>
+                                    <li><strong>BI:</strong> Tableau, Qlickview</li>
+                                    <li><strong>Big Data:</strong> Hadoop, Hive, HP Vertica, </li>
+                                    <li><strong>Development:</strong> TFS, Subversion, Visual Studio</li>
+                                    <li><strong>Processes:</strong> Agile</li>
+                                    <li><strong>Servers:</strong> Windows</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Software Developer (IT Developer / Engineer
+                          II)</strong>,&nbsp;<a href="https://hp.com" target="_blank">HP</a></p>
+                      <p class="text-muted"><small><span class="space-right">Dec, 2011 - Dec, 2013</span><span><i
+                              class="icon-clock mr-5"></i>2 years</span></small></p>
+                      <div class="mop-wrapper space-bottom"></div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Worked on ASP.NET Web applications incorporating a 3-Tier approach.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Did work on all three tiers (MS SQL Database, VB.NET Middle tier object libraries, and
+                            ASP.NET + jQueryUI frontend).</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Project was managed using Agile Scrum methodology (Received Certified Scrum Master
+                            certification 2012).</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Source control system was Team Foundation Server.</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> VB.NET, C#, ASP.NET</li>
+                                    <li><strong>Javascript:</strong> jQueryUI, jQuery</li>
+                                    <li><strong>DB:</strong> MS-SQL</li>
+                                    <li><strong>Development:</strong> TFS, Subversion, Visual Studio</li>
+                                    <li><strong>Processes:</strong> Agile</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </Table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>Software / Systems Engineer</strong>,&nbsp;<a
+                          href="https://www.xfab.com/en/about-x-fab/corporate-overview/locations/usa-texas-single/"
+                          target="_blank">X-Fab Texas, Inc.</a></p>
+                      <p class="text-muted"><small><span class="space-right">Jan, 2010 - Nov, 2011</span><span><i
+                              class="icon-clock mr-5"></i>1 year 11 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Pure-play Semiconductor Foundry</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Development of ASP.NET/C# Web applications to serve as frontends for MSSQL databases.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Developed .NET Web / Console / Winforms Applications.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Involved in Database Design. Administered Windows and Linux servers.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Designed Shell / Batch scripts. Developed C++ console applications.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Deployed machine monitoring system. Developed Inventory tracking system.</p>
+                        </li>
+                        <li class="mop-wrapper">
+                          <p>Deployed Documentation system to sites globally.</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> C#, ASP.NET, Console, Winforms</li>
+                                    <li><strong>General Purpose:</strong> C++, Perl</li>
+                                    <li><strong>DB:</strong> MS-SQL</li>
+                                    <li><strong>Development:</strong> Subversion, Visual Studio</li>
+                                    <li><strong>Servers:</strong> Windows, Redhat</li>
+                                    <li><strong>IoT:</strong> Perle IOLAN</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li class="card card-nested clearfix">
+                    <div class="content">
+                      <p class="clear-margin relative"><strong>IT Intern</strong>,&nbsp;<a
+                          href="https://www.xfab.com/en/about-x-fab/corporate-overview/locations/usa-texas-single/"
+                          target="_blank">X-Fab Texas, Inc.</a></p>
+                      <p class="text-muted"><small><span class="space-right">May, 2007 - Dec, 2009</span><span><i
+                              class="icon-clock mr-5"></i>2 years 7 months</span></small></p>
+                      <div class="mop-wrapper space-bottom">
+                        <p>Internship between TTU EE Department and X-Fab, Texas</p>
+                      </div>
+                      <ul>
+                        <li class="mop-wrapper">
+                          <p>Developed various internal software projects, including statistical analysis programs,
+                            format conversion software, and .NET web applications.</p>
+                          <table>
+                            <tbody>
+                              <tr>
+                                <td>
+                                  <strong>Technologies</strong>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <ul>
+                                    <li><strong>.NET:</strong> C#, Console, Winforms</li>
+                                    <li><strong>General Purpose:</strong> C++, Perl</li>
+                                    <li><strong>DB:</strong> MS-SQL</li>
+                                    <li><strong>Development:</strong> Subversion, Visual Studio</li>
+                                  </ul>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="detail" id="education">
+              <div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span>
+              </div>
+              <div class="info">
+                <h4 class="title text-uppercase">Education</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">
+                      <div class="content">
+                        <p class="clear-margin relative"><strong>Computer Engineering, Bachelor of
+                            Science,&nbsp;</strong>Texas Tech University</p>
+                        <p class="text-muted"><small>Aug, 2005 - Dec, 2009</small></p><i>2.944</i>
+                        <br /><br />
+                        <table>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <strong>Project Lab Projects:</strong>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <ul>
+                                  <li>1a: 60 Hz Notch Filter</li>
+                                  <li>1b: Line Following Robot</li>
+                                  <li>2: Tech-SAL Robotics Programming Language</li>
+                                  <li>3: Remote Event Timer</li>
+                                  <li>4/5: F.P.G.A. based Waveform Generator.</li>
+                                </ul>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="detail" id="references">
+              <div class="icon"><i class="fs-lg icon-thumbs-up"></i><span class="mobile-title">References</span></div>
+              <div class="info">
+                <h4 class="title text-uppercase">References</h4>
+                <div class="content">
+                  <ul class="list-unstyled clear-margin">
+                    <li class="card card-nested">
+                        <div class="mop-wrapper">Available Upon Request</div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script>$(function () {
+      var toggleFloatingMenu = function () {
+        $('.js-floating-nav').toggleClass('is-visible');
+        $('.js-floating-nav-trigger').toggleClass('is-open');
+      };
+
+      $(".background-card").css("min-height", window.screen.availHeight + "px");
+      $("[data-toggle=tooltip]").tooltip();
+      $('.js-floating-nav-trigger').on('click', function (e) {
+        e.preventDefault();
+        toggleFloatingMenu();
+      });
+      $('.js-floating-nav a').on('click', toggleFloatingMenu);
+
+      $("#remaining-profiles").on('show.bs.collapse', function () {
+        $('.js-profiles-collapse > i')
+          .removeClass('icon-chevron-down')
+          .addClass('icon-chevron-up');
+      });
+
+      $("#remaining-profiles").on('hidden.bs.collapse', function () {
+        $('.js-profiles-collapse > i')
+          .removeClass('icon-chevron-up')
+          .addClass('icon-chevron-down');
+      });
+    });
+  </script>
+  <script>WebFontConfig = {
+      google: { families: ['Lato:300,400,700:latin'] }
+    };
+    (function () {
+      var wf = document.createElement('script');
+      wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+        '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+      wf.type = 'text/javascript';
+      wf.async = 'true';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(wf, s);
+    })();</script>
+</body>
+</html>
+--------------------------------
+File: src\lib\assets\kgromero.json
+Contents:
+{
+  "basics": {
+    "name": "Kyle Romero",
+    "label": "Director of Software Development",
+    "email": "kgromero@gmail.com",
+    "phone": "(281) 857-9006",
+    "website": "https://kgromero.com",
+    "summary": "Hello! My name is Kyle Romero. I am a director of software development, with 4 years of management experience and 10 years of full-stack development, technical lead, and architecture experience, living in Jersey City, NJ. I have a Bachelor's Degree in Computer Engineering from Texas Tech University, and have worked in the IT field since 2007 focused on internal software development. Currently, I am a director of operations technology (software solutions for field work), and previously was a team lead and senior developer at Worldwide Machinery, and a technical lead at HP. I have extensive knowledge of all aspects of a successful software development organization, and have used many different technologies and methodologies over the years.",
+    "location": {
+      "address": "1 Harborside Pl Apt 752",
+      "postalCode": "07311",
+      "city": "Jersey City",
+      "countryCode": "US",
+      "region": "New Jersey"
+    },
+    "profiles": [
+      {
+        "network": "Linkedin",
+        "username": "kyleromero",
+        "url": "https://www.linkedin.com/in/kyleromero/"
+      },
+      {
+        "network": "Github",
+        "username": "romero927",
+        "url": "https://github.com/romero927"
+      }
+    ]
+  },
+  "work": [
+    {
+      "company": "InfraSource, A Quanta Services Company (part of MEARS Group)",
+      "positionCurrent": "Director of Operations Technology: 2021 to Current",
+      "positionPrevious1": "Senior Operations Technology Manager: 2020 to 2021",
+      "positionPrevious2": "Operations Technology Manager: 2017 to 2020",
+      "website": "http://www.infrasourceus.com",
+      "startDate": "2017-10-16",
+      "summary": "Construction and Professional Services (Natural Gas, Oil, and Electric Power Industry)",
+      "highlights": [
+        "Direct-Report to CIO of MEARS Group, helping to define and drive software development strategy",
+        "Head of Software Development for InfraSource",
+        "Manage teams of internal and external developers and project managers",
+        "Coordinate external and internal teams using Agile processes",
+        "Travel as needed to various sites around US to deploy new software solutions and manage IT relationship with other groups",
+        "Interface between technical and non-technical personnel; help to bridge the communication gap",
+        "Provide consultation on software development initiatives across MEARS Group",
+        "Explore and architect new technology solutions (focused on digital transformation)",
+        "Led team through process of making internal tools SOX-Compliant",
+        "Worked to develop high availability infrastructure architecture for apps",
+        "Create learning curriculum for new developers and provide training / KT sessions",
+        "Develop and implement strategy to build out company's internal tools using appropriate technologies",
+        "Help team manage DevOps, Agile, GitFlow, CICD, and PM processes",
+        "Help team administer various systems",
+        "Help team with prototyping / hands-on exploration of new technologies"
+      ],
+      "achievements": [
+        "2021:Promoted to Director of Operations Technology after 1 year as Senior Manager",
+        "2021: Nominated to MEARS Group Disruptor Team (Company Think-Tank)",
+        "2021: Nominated to Quanta Leadership Academy",
+        "2020: Promoted to Senior Manager of Operations Technology after 2.5 years of successful innovation"
+      ]
+    },
+    {
+      "company": "Worldwide Machinery",
+      "position": "Team Lead / Senior Software Developer",
+      "website": "https://wwmach.com",
+      "startDate": "2016-04-20",
+      "endDate": "2017-10-13",
+      "summary": "Heavy Machinery Rental and Sales Company",
+      "highlights": [
+        "Manage project workflow using Agile Scrum methodology",
+        "Manage junior developers' workloads",
+        "Develop modern ASP.NET MVC WebAPI",
+        "Develop modern Mobile-first Web Application using React, Redux, Typescript (ES6), Node.js + Express + NPM, Babel, Webpack, and SASS",
+        "Maintain legacy ERP application using .NET Winforms (C#, MS SQL)",
+        "Implement and Maintain Project and DevOps Processes using: JIRA, Bitbucket (GIT), TeamCity, Trello, Slack, Lucidcharts",
+        "Proactively identify process improvements, as well as project opportunities",
+        "Maintain / troubleshoot hardware infrastructure as needed (Windows / Ubuntu Servers)"
+      ]
+    },
+    {
+      "company": "HP Inc.",
+      "position": "Technical Lead (IT Developer / Engineer III)",
+      "website": "https://hp.com",
+      "startDate": "2013-12-15",
+      "endDate": "2016-02-12",
+      "summary": "Consumer IT Products",
+      "highlights": [
+        "Led development team working on enterprise level product quality / escalation management tool.",
+        "Helped manage both onshore and offshore, full time and contingent developers.",
+        "Helped to define and improve processes used on project, including development of a customized disciplined agile methodology and setting project timelines.",
+        "Administered Team Foundation Server (source and requirements).",
+        "Managed quality control and workloads for developers on project.",
+        "Managed release process for tool.",
+        "Worked with business to define requirements and develop architecture for project.",
+        "Familiar with all aspects of project, from both technical and business standpoints.",
+        "While working on .NET Applications, received exposure to Big Data technologies, such as Hadoop and HP Vertica, as well as Dashboarding Technologies, such as Qlikview and Tableau.",
+        "During the year 2015, led team to successfully complete clone of our systems to be used on both sides of HP after the company split into two."
+      ]
+    },
+    {
+      "company": "HP",
+      "position": "Software Developer (IT Developer / Engineer II)",
+      "website": "https://hp.com",
+      "startDate": "2011-12-01",
+      "endDate": "2013-12-15",
+      "highlights": [
+        "Worked on ASP.NET Web applications incorporating a 3-Tier approach.",
+        "Did work on all three tiers (MS SQL Database, VB.NET Middle tier object libraries, and ASP.NET + jQueryUI frontend).",
+        "Project was managed using Agile Scrum methodology (Received Certified Scrum Master certification 2012).",
+        "Source control system was Team Foundation Server."
+      ]
+    },
+    {
+      "company": "X-Fab Texas, Inc.",
+      "position": "Software / Systems Engineer",
+      "website": "https://www.xfab.com/en/about-x-fab/corporate-overview/locations/usa-texas-single/",
+      "startDate": "2010-01-01",
+      "endDate": "2011-11-30",
+      "summary": "Pure-play Semiconductor Foundry",
+      "highlights": [
+        "Development of ASP.NET/C# Web applications to serve as frontends for MSSQL databases.",
+        "Developed .NET Web / Console / Winforms Applications.",
+        "Involved in Database Design. Administered Windows and Linux servers.",
+        "Designed Shell / Batch scripts. Developed C++ console applications.",
+        "Deployed machine monitoring system. Developed Inventory tracking system.",
+        "Deployed Documentation system to sites globally."
+      ]
+    },
+    {
+      "company": "X-Fab Texas, Inc.",
+      "position": "IT Intern",
+      "website": "https://www.xfab.com/en/about-x-fab/corporate-overview/locations/usa-texas-single/",
+      "startDate": "2007-05-15",
+      "endDate": "2009-12-31",
+      "summary": "Internship between TTU EE Department and X-Fab, Texas",
+      "highlights": [
+        "Developed various internal software projects, including statistical analysis programs, format conversion software, and .NET web applications."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Texas Tech University",
+      "area": "Computer Engineering",
+      "studyType": "Bachelor of Science",
+      "startDate": "2005-08-20",
+      "endDate": "2009-12-19",
+      "gpa": "2.944",
+      "courses": [
+        "Project Lab Projects:",
+        "1a: 60 Hz Notch Filter ",
+        "1b: Line Following Robot",
+        "2: Tech-SAL Robotics Programming Language",
+        "3: Remote Event Timer",
+        "4/5: F.P.G.A. based Waveform Generator."
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Available Upon Request"
+    }
+  ]
+}
+--------------------------------
+File: src\lib\assets\kgromero_resume.md
+Contents:
+[Binary file, contents not shown]
+
+--------------------------------
+File: src\lib\assets\kgromero_resume.txt
+Contents:
+[Binary file, contents not shown]
+
+--------------------------------
+File: .vscode\settings.json
+Contents:
+{
+}
+--------------------------------
