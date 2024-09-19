@@ -56,7 +56,7 @@ void GitignoreParser::parse_gitignore(const std::filesystem::path& gitignorePath
 
 void GitignoreParser::add_default_ignores() {
     std::vector<std::string> default_ignores = {
-        "node_modules/",
+        "node_modules/**",
         "venv/",
         ".venv/",
         "env/",

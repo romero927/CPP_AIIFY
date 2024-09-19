@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <algorithm>
+#include <stack>
+#include <iomanip>
 
 FileProcessor::FileProcessor(const GitignoreParser& parser) : m_gitignore_parser(parser) {
     // Define relevant file extensions
@@ -13,7 +15,7 @@ FileProcessor::FileProcessor(const GitignoreParser& parser) : m_gitignore_parser
         ".php", ".rb", ".pl", ".sql", ".sh", ".bat", ".ps1",
         ".config", ".ini", ".env", ".gitignore", ".dockerignore",
         "Dockerfile", "docker-compose.yml", "package.json", "requirements.txt",
-        "Gemfile", "Cargo.toml", "pom.xml", "build.gradle", "Makefile"
+        "Gemfile", "Cargo.toml", "pom.xml", "build.gradle", "Makefile", ".svelte", ".env"
     };
 
     // Define irrelevant file names
@@ -26,70 +28,80 @@ FileProcessor::FileProcessor(const GitignoreParser& parser) : m_gitignore_parser
         ".babelrc", ".npmrc", ".yarnrc", ".travis.yml", "appveyor.yml",
         "circle.yml", "Jenkinsfile", ".gitlab-ci.yml", "sonar-project.properties"
     };
+
+    m_start_time = std::chrono::steady_clock::now();
 }
 
 void FileProcessor::process_files(const std::filesystem::path& directory, const std::filesystem::path& outputFile) {
-    std::cout << "Opening output file: " << outputFile << std::endl;
+    std::cout << "\033[1;32m" << "Starting file processing...\n" << "\033[0m";
+    std::cout << "Root directory: " << directory << "\n";
+    std::cout << "Output file: " << outputFile << "\n\n";
+
     std::ofstream outFile(outputFile);
     if (!outFile.is_open()) {
         throw std::runtime_error("Unable to open output file: " + outputFile.string());
     }
 
-    int processedCount = 0;
-    int ignoredCount = 0;
+    std::stack<std::filesystem::path> directoryStack;
+    directoryStack.push(directory);
 
-    for (const auto& entry : std::filesystem::recursive_directory_iterator(
-        directory,
-        std::filesystem::directory_options::skip_permission_denied
-    )) {
-        if (m_gitignore_parser.should_skip_directory(entry.path())) {
-            ignoredCount++;
-            continue;
-        }
+    while (!directoryStack.empty()) {
+        std::filesystem::path currentDir = directoryStack.top();
+        directoryStack.pop();
 
-        if (!m_gitignore_parser.should_ignore(entry.path()) && is_relevant_file(entry.path())) {
-            if (std::filesystem::is_regular_file(entry)) {
-                std::filesystem::path relativePath = std::filesystem::relative(entry.path(), directory);
-                outFile << "File: " << relativePath.string() << std::endl;
-                outFile << "Contents:" << std::endl;
-                write_file_contents(entry.path(), outFile);
-                outFile << std::endl << "--------------------------------" << std::endl;
-                processedCount++;
+        for (const auto& entry : std::filesystem::directory_iterator(currentDir)) {
+            std::filesystem::path relativePath = std::filesystem::relative(entry.path(), directory);
+            
+            if (std::filesystem::is_directory(entry.path())) {
+                if (!m_gitignore_parser.should_ignore(entry.path())) {
+                    directoryStack.push(entry.path());
+                } else {
+                    m_ignored_files++;
+                }
+            } else if (std::filesystem::is_regular_file(entry.path())) {
+                m_total_files++;
+                if (!m_gitignore_parser.should_ignore(entry.path()) && is_relevant_file(entry.path())) {
+                    std::cout << "\033[1;34m" << "[Processing] " << "\033[0m" << relativePath << "\n";
+                    outFile << "File: " << relativePath.string() << std::endl;
+                    outFile << "Contents:" << std::endl;
+                    write_file_contents(entry.path(), outFile);
+                    outFile << std::endl << "--------------------------------" << std::endl;
+                    m_processed_files++;
+                } else {
+                    m_ignored_files++;
+                }
             }
-        } else {
-            ignoredCount++;
-        }
-        if ((processedCount + ignoredCount) % 100 == 0) {
-            std::cout << "Processed " << processedCount << " files, ignored " << ignoredCount << " files/directories..." << std::endl;
+
+            if (m_total_files % 100 == 0) {
+                //print_progress();
+            }
         }
     }
 
-    std::cout << "File processing complete. Total files processed: " << processedCount << ", ignored: " << ignoredCount << std::endl;
+    print_final_stats();
 }
 
 void FileProcessor::write_file_contents(const std::filesystem::path& file, std::ofstream& outFile) {
     std::ifstream inFile(file, std::ios::binary);
     if (inFile) {
-        // Read the first few bytes to check if it's a binary file
-        char buffer[1024];
-        inFile.read(buffer, sizeof(buffer));
-        std::streamsize bytesRead = inFile.gcount();
-
-        bool isBinary = false;
-        for (std::streamsize i = 0; i < bytesRead; ++i) {
-            if (static_cast<unsigned char>(buffer[i]) > 127 || buffer[i] == 0) {
-                isBinary = true;
-                break;
-            }
-        }
-
-        if (isBinary) {
-            outFile << "[Binary file, contents not shown]" << std::endl;
+        std::string content((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
+        
+        if (content.empty()) {
+            outFile << "[Empty file]" << std::endl;
         } else {
-            // Reset file pointer to beginning
-            inFile.seekg(0, std::ios::beg);
-            std::string contents((std::istreambuf_iterator<char>(inFile)), std::istreambuf_iterator<char>());
-            outFile << contents << std::endl;
+            bool isBinary = false;
+            for (char c : content) {
+                if (static_cast<unsigned char>(c) > 127 || c == 0) {
+                    isBinary = true;
+                    break;
+                }
+            }
+
+            if (isBinary) {
+                outFile << "[Binary file, contents not shown]" << std::endl;
+            } else {
+                outFile << content;
+            }
         }
     } else {
         outFile << "[Unable to read file]" << std::endl;
@@ -101,15 +113,37 @@ bool FileProcessor::is_relevant_file(const std::filesystem::path& file) const {
     std::string extension = file.extension().string();
     std::transform(extension.begin(), extension.end(), extension.begin(), ::tolower);
     
-    // Check if the file name is in the irrelevant_files set
     if (irrelevant_files.find(filename) != irrelevant_files.end()) {
         return false;
     }
     
-    // Check if the file has no extension but its name is in the relevant_extensions set
     if (extension.empty() && relevant_extensions.find(filename) != relevant_extensions.end()) {
         return true;
     }
     
     return relevant_extensions.find(extension) != relevant_extensions.end();
+}
+
+void FileProcessor::print_progress() {
+    auto now = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::seconds>(now - m_start_time).count();
+    
+    std::cout << "\033[1;33m" << "\nProgress Update:" << "\033[0m" << "\n";
+    std::cout << "Total files: " << m_total_files << "\n";
+    std::cout << "Processed: " << m_processed_files << "\n";
+    std::cout << "Ignored: " << m_ignored_files << "\n";
+    std::cout << "Time elapsed: " << duration << " seconds\n\n";
+}
+
+void FileProcessor::print_final_stats() {
+    auto end_time = std::chrono::steady_clock::now();
+    auto duration = std::chrono::duration_cast<std::chrono::seconds>(end_time - m_start_time).count();
+
+    std::cout << "\n\033[1;32m" << "File processing complete!" << "\033[0m" << "\n";
+    std::cout << "------------------------------\n";
+    std::cout << "Total files found:    " << std::setw(8) << m_total_files << "\n";
+    std::cout << "Files processed:      " << std::setw(8) << m_processed_files << "\n";
+    std::cout << "Files ignored:        " << std::setw(8) << m_ignored_files << "\n";
+    std::cout << "Total time:           " << std::setw(8) << duration << " seconds\n";
+    std::cout << "------------------------------\n";
 }
