@@ -91,15 +91,31 @@ void FileProcessor::write_file_contents(const std::filesystem::path& file, std::
         if (content.empty()) {
             outFile << "[Empty file]" << std::endl;
         } else {
-            bool isBinary = false;
-            for (char c : content) {
-                if (static_cast<unsigned char>(c) > 127 || c == 0) {
-                    isBinary = true;
+            // Check for UTF-8 BOM
+            if (content.size() >= 3 && 
+                (unsigned char)content[0] == 0xEF &&
+                (unsigned char)content[1] == 0xBB &&
+                (unsigned char)content[2] == 0xBF) {
+                content = content.substr(3); // Remove BOM
+            }
+
+            // Improved binary detection
+            const int checkBytes = std::min(static_cast<int>(content.size()), 1024); // Check up to 1KB
+            int textChars = 0;
+            bool hasBinary = false;
+
+            for (int i = 0; i < checkBytes; ++i) {
+                unsigned char c = static_cast<unsigned char>(content[i]);
+                if (c <= 0x08 || (c >= 0x0E && c <= 0x1F) || c >= 0x7F) {
+                    hasBinary = true;
                     break;
+                }
+                if ((c >= 0x20 && c <= 0x7E) || c == '\n' || c == '\r' || c == '\t') {
+                    textChars++;
                 }
             }
 
-            if (isBinary) {
+            if (hasBinary || textChars < checkBytes * 0.9) { // Allow 10% non-text chars
                 outFile << "[Binary file, contents not shown]" << std::endl;
             } else {
                 outFile << content;
@@ -109,6 +125,7 @@ void FileProcessor::write_file_contents(const std::filesystem::path& file, std::
         outFile << "[Unable to read file]" << std::endl;
     }
 }
+
 
 bool FileProcessor::is_relevant_file(const std::filesystem::path& file) const {
     std::string filename = file.filename().string();
