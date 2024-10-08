@@ -15,7 +15,8 @@ FileProcessor::FileProcessor(const GitignoreParser& parser) : m_gitignore_parser
         ".php", ".rb", ".pl", ".sql", ".sh", ".bat", ".ps1",
         ".config", ".ini", ".env", ".gitignore", ".dockerignore",
         "Dockerfile", "docker-compose.yml", "package.json", "requirements.txt",
-        "Gemfile", "Cargo.toml", "pom.xml", "build.gradle", "Makefile", ".svelte", ".env"
+        "Gemfile", "Cargo.toml", "pom.xml", "build.gradle", "Makefile", ".svelte", ".env",
+        ".cs", ".csx", ".csproj", ".sln", ".resx", ".settings"
     };
 
     // Define irrelevant file names
@@ -26,7 +27,8 @@ FileProcessor::FileProcessor(const GitignoreParser& parser) : m_gitignore_parser
         "tsconfig.json", "tslint.json", "babel.config.js", "webpack.config.js",
         "rollup.config.js", "vue.config.js", "nuxt.config.js", "next.config.js",
         ".babelrc", ".npmrc", ".yarnrc", ".travis.yml", "appveyor.yml",
-        "circle.yml", "Jenkinsfile", ".gitlab-ci.yml", "sonar-project.properties"
+        "circle.yml", "Jenkinsfile", ".gitlab-ci.yml", "sonar-project.properties",
+        "AssemblyInfo.cs", "*.designer.cs", "*.Designer.cs", "packages.config", "NuGet.Config", "project.json", "project.lock.json", "*.nuspec"
     };
 
     m_start_time = std::chrono::steady_clock::now();
